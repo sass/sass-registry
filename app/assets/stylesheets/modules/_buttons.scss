@@ -1,0 +1,30 @@
+@mixin basic-button {
+  color: #333333;
+  cursor: pointer;
+  background-color: whitesmoke;
+  border: 1px solid lightgrey;
+  padding: 7px 25px 7px;
+  font-size: 15px;
+  position: relative;
+  @include round-corners(20px);
+  text-decoration: none;
+  @include v-gradient(white, #e8e8e8);
+
+  &:hover, &:focus {
+    background-color: #e0eff5;
+    border-color: #abc5d3;
+    @include v-gradient(white, #e0eff5);
+    outline: none;
+  }
+
+  &:active {
+    background-color: #ccedf3;
+    @include v-gradient(#ccedf3, #e5f5ff);
+  }
+
+  img.icon {
+    margin-left: -10px;
+    margin-right: 5px;
+    vertical-align: -20%;
+  }
+}

@@ -1,0 +1,40 @@
+#content {
+  .records_count {
+    float: left;
+    font-size: 110%;
+    padding: 0.7em 0;
+  }
+  .pagination {
+    font-size: 110%;
+    text-align: right;
+    padding: 0.7em 0.3em;
+    a, span {
+      padding: 0.3em 0.6em 0.25em;
+    }
+    span.disabled {
+      color: #aaaaaa;
+    }
+    span.current {
+      color: white;
+      background-color: #454f59;
+      @include round-corners(8px);
+      @include v-gradient(#555d65, #757d85);
+    }
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .page_info {
+      color: #aaaaaa;
+      padding-top: 0.8em;
+    }
+    .prev_page {
+      margin-right: 0.5em;
+    }
+    .next_page {
+      margin-left: 0.5em;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+#navigation {
+  ul.primary_links {
+    font-size: 105%;
+    height: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 15px 20px;
+    a {
+      &:link, &:visited {
+        padding: 3px 15px;
+        color: #333333;
+        text-decoration: none;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    li {
+      display: inline;
+      &.here {
+        a {
+          &:link, &:visited {
+            background-color: #454f59;
+            color: #f0f0f0;
+            @include round-corners(20px);
+            @include v-gradient(#555d65, #757d85);
+          }
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  .account_links {
+    color: #666666;
+    float: right;
+    font-size: 1em;
+    padding: 15px 20px;
+    a, a:visited {
+      color: #0066cc;
+      text-decoration: underline;
+    }
+    a:hover {
+      text-decoration: none;
+    }
+  }
+}

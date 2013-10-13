@@ -1,0 +1,28 @@
+@mixin flash-messages {
+  p#notice, p#error {
+    padding: 1em;
+    @include round-corners;
+  }
+  p#notice {
+    background-color: #e2f9e2;
+    border: 4px solid #a2d5a2;
+    color: #333333;
+  }
+  p#error {
+    background-color: #f9e2e2;
+    border: 4px solid #f3a2a2;
+    color: #333333;
+  }
+}
+
+@mixin error-messages {
+  .error_with_field {
+    input, select, textarea {
+      background: #ffeeee;
+    }
+    .error {
+      color: red;
+      display: block;
+    }
+  }
+}

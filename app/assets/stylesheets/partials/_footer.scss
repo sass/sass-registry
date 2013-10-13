@@ -1,0 +1,17 @@
+#footer {
+  border-top: 2px solid #f0f0f0;
+  padding: 20px 0;
+  color: #aaaaaa;
+  font-size: 95%;
+  margin: 15px 20px 0;
+  p {
+    margin-bottom: 0.5em;
+  }
+  a {
+    color: #888888;
+    &:hover {
+      text-decoration: none;
+      color: #666666;
+    }
+  }
+}
