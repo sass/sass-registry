@@ -1,0 +1,51 @@
+# README
+
+## Getting started
+
+1. You will need postgres installed on your system:
+
+    brew install postgres
+
+2. Follow the Hombrew instructions
+
+    brew info postgres
+
+3. Create a user for the database:
+
+    createuser sass-registry
+
+4. Create the databases:
+
+    createdb -Osass-registry -Eutf8 sass-registry_development
+    createdb -Osass-registry -Eutf8 sass-registry_test
+
+5. Install the pg gem:
+
+    sudo env ARCHFLAGS="-arch x86_64" gem install --no-ri --no-rdoc pg
+
+5. Bundle install:
+
+    bundle install
+
+6. Boostrap the database:
+
+    bundle exec rake db:migrate
+
+## Deployment
+
+We use Heroku for deployment. You will need the Heroku toolbelt installed.
+If you don't have that, go here and follow the instructions:
+
+  https://toolbelt.heroku.com/
+
+After that login to Heroku from the command line:
+
+    heroku login
+
+To deploy, the only thing you need to do if you have the toolbelt installed
+and are logged in on the command line is:
+
+    git push heroku master
+
+You will of course need access to the project on Heroku, but seeing as you
+got access to this repo, somone should be available to give you that.
