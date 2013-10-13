@@ -4,32 +4,32 @@
 
 1. You will need postgres installed on your system (skip to step 3 if you've already done this):
 
-      brew install postgres
+        brew install postgres
 
 2. Follow the Hombrew instructions (very important):
 
-      brew info postgres
+        brew info postgres
 
 3. Create a user for the database:
 
-      createuser sass-registry
+        createuser sass-registry
 
 4. Create the databases:
 
-      createdb -Osass-registry -Eutf8 sass-registry_development
-      createdb -Osass-registry -Eutf8 sass-registry_test
+        createdb -Osass-registry -Eutf8 sass-registry_development
+        createdb -Osass-registry -Eutf8 sass-registry_test
 
 5. Install the pg gem:
 
-      sudo env ARCHFLAGS="-arch x86_64" gem install --no-ri --no-rdoc pg
+        sudo env ARCHFLAGS="-arch x86_64" gem install --no-ri --no-rdoc pg
 
 5. Bundle install:
 
-      bundle install
+        bundle install
 
 6. Boostrap the database:
 
-      bundle exec rake db:migrate
+        bundle exec rake db:migrate
 
 ## Deployment
 
