@@ -44,7 +44,7 @@ After that login to Heroku from the command line:
 
 Now you need to setup Heroku as a remote:
 
-    git add heroku git@heroku.com:sass-registry.git
+    git remote add heroku git@heroku.com:sass-registry.git
 
 To deploy, the only thing you need to do from now on is:
 
