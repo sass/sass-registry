@@ -42,10 +42,13 @@ After that login to Heroku from the command line:
 
     heroku login
 
-To deploy, the only thing you need to do if you have the toolbelt installed
-and are logged in on the command line is:
+Now you need to setup Heroku as a remote:
+
+    git add heroku git@heroku.com:sass-registry.git
+
+To deploy, the only thing you need to do from now on is:
 
     git push heroku master
 
-You will of course need access to the project on Heroku, but seeing as you
+You will, of course, need access to the project on Heroku, but seeing as you
 got access to this repo, somone should be available to give you that.
