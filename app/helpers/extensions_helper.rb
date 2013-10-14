@@ -24,12 +24,12 @@ module ExtensionsHelper
   def view_orders(current)
     o = []
     ExtensionsController::ORDER_BY.keys.each {|order|
-      if current==order
-        o << order
+      if current == order
+        o << "<strong>#{order}</strong>"
       else
         o << link_to(order, order: order)
       end
     }
-    o.join(' | ')
+    raw(o.join(' | '))
   end
 end

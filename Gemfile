@@ -34,6 +34,8 @@ gem 'rails_12factor', group: :production
 # Devise for authentication
 gem 'devise'
 
+gem 'will_paginate'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
