@@ -1,0 +1,21 @@
+<tr>
+  <% unless defined? hide_screenshot && hide_screenshot %>
+    <td class="screenshot">
+      <%= image_tag extension.screenshot.url(:thumb), :width=>120 %>
+    </td>
+  <% end %>
+  <td class="info">
+    <div class="name">
+      <%= link_to extension.name, extension %>
+      <% unless defined? hide_edit && hide_edit %>
+        <%= link_to "Edit", edit_extension_path(extension), :class=>"action" if can_edit?(extension) %>
+      <% end %>
+    </div>
+    <div class="description"><%= short_description(extension.description) %></div>
+    <% unless defined? hide_author && hide_author %>
+      <div class="authored">
+        by <%= link_to_author extension.author %>
+      </div>
+    <% end %>
+  </td>
+</tr>

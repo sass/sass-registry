@@ -1,0 +1,21 @@
+<% @title = "Radiant CMS Extension Registry Login" %>
+<% @h1 = "Login" %>
+<% @selected = :login %>
+
+<% form_tag session_path do %>
+  <p>
+    <label for="login">Username</label>
+    <%= text_field_tag 'login', nil, :class => 'textbox', :size => 30 %>
+  </p>
+  <p>
+    <label for="password">Password</label>
+    <%= password_field_tag 'password', nil, :class => 'textbox', :size => 30 %>
+  </p>
+  <p>
+    <%= check_box_tag 'remember_me', nil, false, :class => 'checkbox' %>
+    <label class="checkbox" for="remember_me">Remember me</label>
+  </p>
+  <p class="buttons">
+    <button type"submit">Login</button>
+  </p>
+<% end %>

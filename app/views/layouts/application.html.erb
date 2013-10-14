@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SassRegistry</title>
+  <title><%= @title %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -21,15 +21,15 @@
   <div id="navigation_wrapper">
     <div id="navigation">
       <div class="account_links">
-        <%# if logged_in? %>
-          Welcome back <%= link_to current_author, :class => (@selected == :profile ? "here" : nil) %>!
+        <% if user_signed_in? %>
+          Welcome back <%= link_to current_user, :class => (@selected == :profile ? "here" : nil) %>!
           &nbsp;
-          <%= link_to "Logout", logout_url %>
-        <%# else %>
-          <%#= link_to "Signup", signup_url, :class => ("here" if @selected == :signup) %>
-          <%#or%>
-          <%#= link_to "Login", login_url, :class => ("here" if @selected == :login) %>
-        <%# end %>
+          <%= link_to "Logout", logout_path %>
+        <% else %>
+          <%= link_to "Signup", signup_path, :class => ("here" if @selected == :signup) %>
+          or
+          <%= link_to "Login", login_path, :class => ("here" if @selected == :login) %>
+        <% end %>
       </div>
       <ul class="primary_links">
         <li id="index_link" class="<%= "here" if @selected == :home %> "><%= link_to "Home", root_path %></li>

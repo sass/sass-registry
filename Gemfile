@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 1.2'
 # Needed for heroku
 gem 'rails_12factor', group: :production
 
+# Devise for authentication
+gem 'devise'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
