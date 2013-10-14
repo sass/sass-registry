@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  repository_url: MyString
+  download_url: MyString
+  author_id: 1
+  description: MyString
+  homepage_url: MyString
+  current_version: MyString
+  supports_sass_version: MyString
+  repository_type: MyString
+  download_type: MyString
+  installation_instructions: MyString
+
+two:
+  name: MyString
+  repository_url: MyString
+  download_url: MyString
+  author_id: 1
+  description: MyString
+  homepage_url: MyString
+  current_version: MyString
+  supports_sass_version: MyString
+  repository_type: MyString
+  download_type: MyString
+  installation_instructions: MyString

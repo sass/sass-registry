@@ -1,7 +1,4 @@
 module UrlHelper
-  def extensions_path
-  end
-  
   def search_path
   end
 

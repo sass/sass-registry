@@ -1,6 +1,4 @@
 class AuthorsController < ApplicationController
-  # TODO: cleanup routes
-
   # GET /authors
   def index
     @authors = User.paginate :page => params[:page], :conditions => ["extensions_count > 0"], :order => 'name, login'
