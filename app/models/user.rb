@@ -12,10 +12,6 @@ class User < ActiveRecord::Base
     25
   end
 
-  def self.extension_authors
-    find(:all, :conditions => ["extensions_count > 0"])
-  end
-  
   def self.extension_authors_count
     count(:conditions => ["extensions_count > 0"])
   end
@@ -26,7 +22,7 @@ class User < ActiveRecord::Base
   
   # TODO: what here?
   def to_xml(options={}, &block)
-    super(options.reverse_merge(:except => [:crypted_password, :salt, :identity_url, :remember_token, :remember_token_expires_at]), &block)
+    super(options.reverse_merge(:except => [:encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip]), &block)
   end
 
   def display_name
