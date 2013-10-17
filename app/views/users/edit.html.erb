@@ -1,0 +1,75 @@
+<%- @title = "Sass Extension Registry Profile" %>
+<%- @h1 = "Edit Your Profile" %>
+<%- @selected = :profile %>
+
+<%= form_for @user, url: {action: 'update'} do |f| %>
+
+  <div class="full_size_avatar">
+    <%= image_tag gravatar_url(@user.email, :size => 182), :width=>182, :height=>182, :alt=>"" %>
+    <p class="caption">Avatar provided by <a href="http://gravatar.com">Gravatar.com</a></p>
+  </div>
+
+  <fieldset style="width: 70%">
+    <legend><span>Personal info</span></legend>
+
+    <div class="set">
+      <p>
+        <label for="user_name">Name</label>
+        <%= f.text_field :name, :class => "textbox big", :size => 40 %>
+      </p>
+    </div>
+
+    <div class="set">
+      <p>
+        <label for="user_email">Email</label>
+        <%= f.text_field :email, :class => "textbox", :size => 25 %>
+      </p>
+      <p>
+        <label for="user_website">Website <span class="hint">(include &#8220;http://&#8221;)</span></label>
+        <%= f.text_field :website, :class => "textbox", :size => 25 %>
+      </p>
+    </div>
+
+    <div class="set">
+      <p>
+        <label for="user_company">Company</label>
+        <%= f.text_field :company, :class => "textbox", :size => 25 %>
+      </p>
+      <p>
+        <label for="user_location">Location</label>
+        <%= f.text_field :location, :class => "textbox", :size => 25 %>
+      </p>
+    </div>
+
+    <p>
+      <label for="user_bio">Bio <span class="hint">(textile allowed)</span>
+      <%= f.text_area :bio, :size => "38x4" %>
+    </p>
+
+    <p>
+      <%= f.check_box :available_for_hire, :class => "checkbox" %>
+      <label class="checkbox" for="user_available_for_hire">I am available for hire on Sass projects</label>
+    </p>
+  </fieldset>
+
+  <fieldset style="width: 70%">
+    <legend><span>Account info</span></legend>
+
+    <div class="set">
+      <p>
+        <label for="user_password">New Password</label>
+        <%= f.password_field :password, :class => "textbox", :size => 25 %>
+      </p>
+      <p>
+        <label for="user_password_confirmation">Confirm Password</label>
+        <%= f.password_field :password_confirmation, :class => "textbox", :size => 25 %>
+      </p>
+    </div>
+  </fieldset>
+
+  <div class="buttons">
+    <button type="submit">Save Profile</button>
+    or
+    <%= link_to "Cancel", :back, :class => "cancel" %>
+  </div>
+<% end %>

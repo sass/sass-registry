@@ -45,7 +45,7 @@ module ApplicationHelper
   end
 
   def link_to_author(author, *args)
-    link_to(author, author, *args)
+    link_to(author, author_path(author), *args)
   end
 
 end

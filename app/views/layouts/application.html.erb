@@ -22,7 +22,7 @@
     <div id="navigation">
       <div class="account_links">
         <% if user_signed_in? %>
-          Welcome back <%= link_to current_user, :class => (@selected == :profile ? "here" : nil) %>!
+          Welcome back <%= link_to current_user, edit_user_path(current_user), :class => (@selected == :profile ? "here" : nil) %>!
           &nbsp;
           <%= link_to "Logout", logout_path %>
         <% else %>
