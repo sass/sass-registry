@@ -1,7 +1,7 @@
 class AuthorsController < ApplicationController
   # GET /authors
   def index
-    @authors = User.paginate :page => params[:page], :conditions => ["extensions_count > 0"], :order => 'name, login'
+    @authors = User.paginate :page => params[:page], :conditions => ["extensions_count > 0"], :order => 'name, email'
   end
 
   # GET /authors/1
