@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'rails_12factor', group: :production
 
 # Devise for authentication
-gem 'devise'
+gem 'devise', '~> 3.1.1'
 
 gem 'will_paginate'
 
