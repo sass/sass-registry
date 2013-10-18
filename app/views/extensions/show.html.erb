@@ -1,0 +1,87 @@
+<%- @title = h(@extension.name) %>
+<%- @title << " extension" unless @title.match(/extension/) %>
+<%- @title << " - Sass" %>
+<%- h1 = h(@extension.name) %>
+<%- h1 += " ".html_safe + link_to("Edit", edit_extension_path(@extension), :class => 'action').html_safe if can_edit?(@extension) %>
+<%- @h1 = h1 %>
+<%- @selected = :extensions %>
+
+<% unless true %>
+<div class="screenshot">
+  <%= link_to image_tag(@extension.screenshot.url(:medium)), @extension.screenshot.url(:large) %>
+</div>
+<% end %>
+
+<div style="width: 75%">
+  <div class="big">
+    <%= sanitize(markdown(@extension.description.to_s)) %>
+  </div>
+
+  <table class="attributes">
+    <tr>
+      <th>Author</th>
+      <td><%= link_to_author @extension.author %></td>
+    </tr>
+    <% unless @extension.homepage_url.blank? %>
+      <tr>
+        <th>Website</th>
+        <td><%= link_to @extension.homepage_url, @extension.homepage_url %>
+        </td>
+      </tr>
+    <% end %>
+    <% unless @extension.repository_url.blank? %>
+      <tr>
+        <th>Repository</th>
+        <td><%= link_to h(@extension.repository_url), @extension.repository_url %></td>
+      </tr>
+    <% end %>
+    <% unless @extension.download_url.blank? %>
+      <tr>
+        <th>Download</th>
+        <td><%= link_to h(@extension.download_url), @extension.download_url %></td>
+      </tr>
+    <% end %>
+    <% unless @extension.supports_sass_version.blank? %>
+      <tr>
+        <th>Supports</th>
+        <td><%= "Sass #{@extension.supports_sass_version}" %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <th>Record Created</th>
+      <td>
+        <%= @extension.created_at.to_date.to_s(:long) %>
+        <%= "(#{time_ago_in_words(@extension.created_at)} ago)" %>
+      </td>
+    </tr>
+    <% if @extension.updated_at > @extension.created_at + 1.day %>
+      <tr>
+        <th>Last Updated</th>
+        <td>
+          <%= @extension.updated_at.to_date.to_s(:long) %>
+          <%= "(#{time_ago_in_words(@extension.updated_at)} ago)" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+
+  <div class="installation">
+    <h3>Installation</h3>
+    <p>At the command prompt, in the root of your Sass project, type:</p>
+    <pre><code>sass install <%= @extension.name %></code></pre>
+    <% unless @extension.installation_instructions.blank? %>
+      <%= sanitize(markdown(@extension.installation_instructions)) %>
+    <% end %>
+  </div>
+
+  <% if can_edit?(@extension) %>
+    <p><%= link_to("Delete", extension_path(@extension), :method => :delete, :confirm => "Are you sure you want to delete this extension?", :class => "button") %></p>
+  <% end %>
+</div>
+
+<% unless true %>
+<div class="screenshot-zoom">
+  <%= image_tag(@extension.screenshot.url(:large)) %>
+  <%= link_to "close", "#" %>
+</div>
+<% end %>

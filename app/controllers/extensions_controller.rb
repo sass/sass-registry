@@ -46,7 +46,7 @@ class ExtensionsController < ApplicationController
   # POST /extensions
   # POST /extensions.xml
   def create
-    @extension = Extension.new(params[:extension])
+    @extension = Extension.new(extension_params)
     @extension.author = current_user
     respond_to do |format|
       if @extension.save
@@ -65,7 +65,7 @@ class ExtensionsController < ApplicationController
   # PUT /extensions/1.xml
   def update
     respond_to do |format|
-      if @extension.update_attributes(params[:extension])
+      if @extension.update_attributes(extension_params)
         format.html { flash[:notice] = 'Updated successfully!'; redirect_to extension_url(@extension) }
         format.js
         format.xml  { head :ok }
@@ -99,6 +99,10 @@ class ExtensionsController < ApplicationController
     
     def assign_extension
       @extension = Extension.find(params[:id])
+    end
+
+    def extension_params
+      params.require(:extension).permit(:name, :current_version, :homepage_url, :supports_sass_version, :repository_url, :repository_type, :download_url, :download_type, :description, :installation_instructions, :screenshot)
     end
     
     def require_correct_permissions

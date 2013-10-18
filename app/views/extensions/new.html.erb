@@ -1,0 +1,12 @@
+<%- @title = "Add Sass Extension" %>
+<%- @h1 = "Add Extension" %>
+<%- @selected = :extensions %>
+
+<%= form_for @extension, :html => {:multipart => true} do |f| %>
+  <%= render partial: "fields", locals: {f: f} %>
+  <p class="buttons">
+    <button type="submit">Add Extension</button>
+    or
+    <%= link_to "Cancel", extensions_path, :class => "cancel" %>
+  </p>
+<% end %>

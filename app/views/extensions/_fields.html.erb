@@ -1,0 +1,92 @@
+<fieldset>
+  <legend><span>Name</span></legend>
+
+  <div class="set">
+    <p>
+      <label for="extension_name">Name</label>
+      <%= f.text_field :name, :size => 33, :class => "textbox" %>
+    </p>
+    <p>
+      <label for="extension_current_version">Version</label>
+      <%= f.text_field :current_version, :size => 8, :class => "textbox" %>
+    </p>
+  </div>
+
+  <p>
+    <label for="extension_homepage_url">Homepage</label>
+    <%= f.text_field :homepage_url, :size => 50, :class => "textbox" %>
+  </p>
+</fieldset>
+
+<fieldset>
+  <legend><span>Compatibility</span></legend>
+  <p>
+    <label for="extension_supports_sass_version">Sass Version</label>
+    <%= f.text_field :supports_sass_version, :size => 8, :class => "textbox" %>
+    <span class="hint" style="display: inline">(the highest version tested)</span>
+  </p>
+</fieldset>
+
+<fieldset>
+  <legend><span>Download URLs</span></legend>
+
+  <p class="description">These URLs are used by <kbd>sass install</kbd> to
+    download the extension and install it in the appropriate directory. You must
+    provide <em>at least</em> one URL.</p>
+
+  <div class="set">
+    <p>
+      <label for="extension_repository_url">Repository</label>
+      <%= f.text_field :repository_url, :size => 50, :class => "textbox" %>
+      <span class="hint">The URL of the Git or Subversion repository</span>
+    </p>
+    <p>
+      <label for="extension_repository_type">Type</label>
+      <%= f.select :repository_type, repository_types_for_select, { :include_blank => true } %>
+    </p>
+  </div>
+
+  <div class="set">
+    <p>
+      <label for="extension_download_url">Download</label>
+      <%= f.text_field :download_url, :size => 50, :class => "textbox" %>
+      <span class="hint">The URL of the bundled package (tgz, zip, gem)</span>
+    </p>
+    <p>
+      <label for="extension_download_type">Type</label>
+      <%= f.select :download_type, download_types_for_select, { :include_blank => true } %>
+    </p>
+  </div>
+</fieldset>
+
+<fieldset>
+  <legend><span>Description</span></legend>
+
+  <p class="description">Enter two or three paragraphs about your extension. Be
+    descriptive!</p>
+  <p>
+    <%= f.text_area :description, :size => "50x8" %>
+    <span class="hint">Formatted with <a href="https://help.github.com/articles/github-flavored-markdown" target="_blank">Markdown</a></span>
+  </p>
+</fieldset>
+
+<fieldset>
+  <legend><span>Additional Installation Instructions</span></legend>
+
+  <p class="description">If there are additional, non-standard installation
+    instructions for your extension, type them below.</p>
+
+  <p>
+    <%= f.text_area :installation_instructions, :size => "50x8" %>
+    <span class="hint">Formatted with <a href="https://help.github.com/articles/github-flavored-markdown" target="_blank">Markdown</a></span>
+  </p>
+</fieldset>
+
+<% unless true %>
+<fieldset>
+  <legend><span>Screenshot</span></legend>
+  <p class="description">Upload an image below. Don&#8217;t be shy!</p>
+
+  <p><%= f.file_field :screenshot, :class => "upload" %></p>
+</fieldset>
+<% end %>

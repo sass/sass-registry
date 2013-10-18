@@ -57,7 +57,7 @@ $base_font_size: 95% !default;
   ul {
     padding-left: 2.25em;
   }
-  tt, code {
+  tt, code, kbd {
     font-size: 90%;
     font-family: $fixed_font_family;
     background: #f0f0f0;

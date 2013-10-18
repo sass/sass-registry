@@ -1,7 +1,7 @@
 module ExtensionsHelper
   def short_description(description)
     first_line = description.split("\n\n").first
-    sanitize(textilize(truncate(first_line, :length => 200)))
+    sanitize(markdown(truncate(first_line, :length => 200))) unless first_line.blank?
   end
   
   def repository_types_for_select

@@ -24,7 +24,7 @@
         <% if user_signed_in? %>
           Welcome back <%= link_to current_user, edit_user_path(current_user), :class => (@selected == :profile ? "here" : nil) %>!
           &nbsp;
-          <%= link_to "Logout", logout_path %>
+          <%= link_to "Logout", logout_path, method: 'delete' %>
         <% else %>
           <%= link_to "Signup", signup_path, :class => ("here" if @selected == :signup) %>
           or
@@ -52,10 +52,10 @@
     <div id="main" class="<%= "content_with_sidebar" if content_for? :sidebar %>">
       <div id="content">
         <% flash.keys.each do |key| %>
-          <p id="key"><%= flash[key] %>
+          <p id="<%= key %>"><%= flash[key] %>
         <% end %>
         <% if content_for? :actions %>
-          <div class="actions">
+          <div id="actions">
             <%= yield :actions %>
           </div>
         <% end %>

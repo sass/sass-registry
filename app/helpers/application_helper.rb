@@ -22,14 +22,6 @@ module ApplicationHelper
     url
   end
 
-  def content_for?(symbol)
-    !(get_content_for(symbol)).nil?
-  end
-
-  def get_content_for(symbol)
-    instance_variable_get("@content_for_#{symbol}")
-  end
-
   def pagination_for(model)
     will_paginate model, :previous_label => "&laquo; Prev", :next_label => "Next &raquo;"
   end
@@ -46,6 +38,15 @@ module ApplicationHelper
 
   def link_to_author(author, *args)
     link_to(author, author_path(author), *args)
+  end
+
+  def markdown(source)
+    @_markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+      autolink: true,
+      filter_html: true,
+      no_styles: true
+    )
+    @_markdown.render(source)
   end
 
 end
