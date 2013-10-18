@@ -1,7 +1,4 @@
 module UrlHelper
-  def search_path
-  end
-
   def login_path
     new_user_session_path
   end

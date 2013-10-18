@@ -8,7 +8,7 @@
     Sass extensions for almost every need.
     Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
   </p>
-  <% form_tag "/search", :method => "get", :id => "search" do %>
+  <%= form_tag search_path, :method => "get", :id => "search" do %>
     <p>
       <label for="q">Search</label>
       <input class="search" name="q" id="q" type="text">

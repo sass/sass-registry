@@ -1,4 +1,6 @@
 SassRegistry::Application.routes.draw do
+  get 'search', to: 'search#search'
+
   resources :extensions
 
   resources :authors, only: [:show, :index]

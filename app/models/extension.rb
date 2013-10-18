@@ -19,45 +19,6 @@ class Extension < ActiveRecord::Base
   after_create  :update_cached_fields
   after_destroy :update_cached_fields
   
-  #define_index do
-    #indexes :name
-    #indexes :description
-    #indexes author.name, :as=>:author_name, :facet=>true
-    #indexes author.company, :as=>:author_company
-
-    #has :supports_radiant_version, :facet=>true
-    #has :repository_type, :facet=>true
-    #has :download_type, :facet=>true
-    #has 'CRC32(supports_radiant_version)', :as=>:f_supports_radiant_version, :type=>:integer
-    #has 'CRC32(repository_type)', :as=>:f_repository_type, :type=>:integer
-    #has 'CRC32(download_type)', :as=>:f_download_type, :type=>:integer
-    #has :created_at, :updated_at
-    
-    #set_property :field_weights => {
-      #:name => 3
-    #}
-  #end
-  
-  #sphinx_scope(:best_first) { 
-    #{:order => '@relevance DESC, updated_at DESC'}
-  #}
-
-  #sphinx_scope(:by_author_name) { |name|
-    #{:conditions => {:author_name => name}}
-  #}
-
-  #sphinx_scope(:by_radiant_version) { |version|
-    #{:with => {:f_supports_radiant_version => version.to_crc32}}
-  #}
-
-  #sphinx_scope(:by_repository_type) { |type|
-    #{:with => {:f_repository_type => type.to_crc32}}
-  #}
-
-  #sphinx_scope(:by_download_type) { |type|
-    #{:with => {:f_download_type => type.to_crc32}}
-  #}
-
   def self.per_page
     25
   end
