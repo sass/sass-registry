@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     case model
     when Extension
       !!(current_user && ((current_user.id == model.author_id) || current_user.manager?))
-    when Author
+    when User
       !!(current_user && (current_user.id == model.id))
     else
       raise "unknown model #{model}:#{model.class}"

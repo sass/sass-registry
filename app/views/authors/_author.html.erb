@@ -13,16 +13,6 @@
       <%= author.location %>
     </div>
   </td>
-  <% unless defined? hide_extension_count && hide_extension_count %>
-    <td class="extensions_count">
-      <%= pluralize(author.extensions_count, "extension") %>
-    </td>
-  <% end %>
-  <% unless defined? hide_available_for_hire && hide_available_for_hire %>
-    <td class="available_for_hire">
-      <% if author.available_for_hire? %>
-        <span class="badge">Available for Hire</span>
-      <% end %>
-    </td>
-  <% end %>
+  <td class="extensions_count"><%= pluralize(author.extensions_count, "extension") %></td>
+  <td class="available_for_hire"><% if author.available_for_hire? %><span class="badge">Available for Hire</span><% end %></td>
 </tr>

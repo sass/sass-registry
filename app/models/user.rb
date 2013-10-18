@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :extensions, :dependent => :destroy
+  has_many :extensions, foreign_key: 'author_id', dependent: :destroy
   
   scope :authors, -> { where("extensions_count > 0") }
 

@@ -1,0 +1,79 @@
+<%- @title= "Author Profile: " + h(@author) %>
+<%- h1 = h(@author) %>
+<%- h1 += " #{link_to "Edit", edit_user_path(@author), :class => 'action'}".html_safe if can_edit?(@author) %>
+<%- @h1 = h1 %>
+<%- @selected = :authors %>
+
+<div class="full_size_avatar">
+  <%= image_tag gravatar_url(@author.email, :size => 182), :width=>182, :height=>182, :alt=>"" %>
+  <p class="caption">
+    Avatar provided by <a href="http://gravatar.com">Gravatar.com</a>
+  </p>
+</div>
+
+<div class="big" style="width: 75%">
+  <%= sanitize(markdown(@author.bio.to_s)) %>
+</div>
+
+<table class="attributes" style="width: 75%">
+  <tr>
+    <th class="label">Email</th>
+    <td class="value">
+      <%= mail_to(h(@author.email), nil, :encode => :javascript) %>
+    </td>
+  </tr>
+  <% unless @author.website.blank? %>
+    <tr>
+      <th class="label">Website/Blog</th>
+      <td class="value">
+        <%= link_to h(@author.website), h(@author.website) if @author.website %>
+      </td>
+    </tr>
+  <% end %>
+  <% unless @author.company.blank? %>
+    <tr>
+      <th class="label">Company</th>
+      <td class="value">
+        <%= h @author.company %>
+      </td>
+    </tr>
+  <% end %>
+  <% unless @author.location.blank? %>
+    <tr>
+      <th class="label">Location</th>
+      <td class="value">
+        <%= h @author.location %>
+      </td>
+    </tr>
+  <% end %>
+  <tr>
+    <th class="label">Member Since</th>
+    <td class="value">
+      <%= @author.created_at.to_date.to_s(:long) %>
+      <%= "(#{time_ago_in_words(@author.created_at)})" %>
+    </td>
+  </tr>
+</table>
+
+<% if @author.available_for_hire? %>
+  <p style="margin: 1.5em 0">
+    <span class="badge">Available for Hire</span>
+  </p>
+<% end %>
+
+<% if @author.extensions_count > 0 %>
+  <h3 style="margin: 2em 0 0.75em">
+    Extensions <small>(<%= @author.extensions_count %>)</small>
+  </h3>
+  <table class="index" id="extensions" style="width: 75%">
+    <tbody>
+      <%= render :partial => "extensions/extension", :collection => @author.extensions, :locals => {:hide_author => true} %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if can_edit?(@author) %>
+  <p style="margin-top: 2.5em">
+    <%= link_to( image_tag("/images/plus.png", :class=>"icon") +" Add Extension", new_extension_path, :class => "button") %>
+  </p>
+<% end %>
