@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def can_edit?(model)
     case model
     when Extension
-      !!(current_user && ((current_user.id == model.author_id) || current_user.manager?))
+      !!(current_user && ((current_user.id == model.author_id) || current_user.admin?))
     when User
       !!(current_user && (current_user.id == model.id))
     else

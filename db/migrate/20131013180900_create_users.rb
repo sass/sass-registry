@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text :bio
       t.boolean :available_for_hire, default: false
       t.integer :extensions_count
+      t.boolean :admin, default: false
 
       t.timestamps
     end

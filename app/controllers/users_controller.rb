@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:notice] = "Profile updated."
-      redirect_to author_path(@user)
+      redirect_to root_url
     else
       flash[:notice] = "There were errors saving the form."
       render action: "edit", status: :unprocessible_entity

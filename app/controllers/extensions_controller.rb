@@ -1,5 +1,6 @@
 class ExtensionsController < ApplicationController
   before_filter :assign_extension, :only => [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy]
   before_filter :require_correct_permissions, :only => [:edit, :update, :destroy]
 
   ORDER_BY = {

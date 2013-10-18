@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20131014013753) do
     t.text     "bio"
     t.boolean  "available_for_hire",     default: false
     t.integer  "extensions_count"
+    t.boolean  "admin",                  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "",    null: false
