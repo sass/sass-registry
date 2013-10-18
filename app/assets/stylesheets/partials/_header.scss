@@ -1,26 +1,29 @@
 #header {
   position: relative;
   padding: 26px 0 0;
+
   #logo {
     height: 45px;
     padding: 10px 0;
     margin: 0px 26px 26px 20px;
     font-size: 35px;
     color: white;
+
     .title {
       display: inline;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
+
     .subtitle {
       display: inline;
       font-size: 0.6em;
       font-style: italic;
       font-weight: normal;
       text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-      &:before {
-        content: "// ";
-      }
+
+      &:before { content: "// "; }
     }
+
     .parent_site {
       background-color: #6b737b;
       display: inline;
@@ -32,14 +35,15 @@
       margin-top: 6px;
       @include round-corners(8px);
       text-shadow: 2px 2px 2px rgba(107, 115, 123, 0.5);
+
       &:after {
         content: " →";
       }
+
       a {
         color: white;
-        &:hover {
-          text-decoration: none;
-        }
+
+        &:hover { text-decoration: none; }
       }
     }
   }
