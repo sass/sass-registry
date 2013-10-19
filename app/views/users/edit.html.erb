@@ -42,8 +42,9 @@
     </div>
 
     <p>
-      <label for="user_bio">Bio <span class="hint">(textile allowed)</span>
+      <label for="user_bio">Bio 
       <%= f.text_area :bio, :size => "38x4" %>
+      <span class="hint">Formatted with <a href="https://help.github.com/articles/github-flavored-markdown" target="_blank">Markdown</a></span>
     </p>
 
     <p>
