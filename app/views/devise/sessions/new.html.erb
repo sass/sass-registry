@@ -1,0 +1,35 @@
+<%- @title = "Sass Extension Registry Login" %>
+<%- @h1 = "Please log in" %>
+<%- @selected = :login %>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+  <p>
+    <%= f.label :email %>
+    <%= f.email_field 'email', class: 'textbox', size: 42, autofocus: true %>
+  </p>
+  <div class="set">
+    <p>
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'textbox', size: 20 %>
+      <%- if devise_mapping.recoverable? %>
+        <small style="display: block; margin-top: 0.25em">
+        <%= link_to "I forgot my password", new_password_path(resource_name) %><br />
+        </small>
+      <% end -%>
+    </p>
+    <% if devise_mapping.rememberable? -%>
+      <p style="margin-top: 2.5em">
+        <%= f.check_box :remember_me, class: 'checkbox' %>
+        <%= f.label :remember_me, 'Keep me logged in', class: 'checkbox' %>
+      </p>
+    <% end -%>
+  </div>
+
+  <p class="buttons">
+    <button type="submit">Log in</button>
+  </p>
+<% end %>
+
+<%= render "devise/shared/github_button" %>
+<%= render "devise/shared/links" %>
