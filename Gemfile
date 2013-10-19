@@ -32,11 +32,21 @@ gem 'jbuilder', '~> 1.2'
 # Needed for heroku
 gem 'rails_12factor', group: :production
 
-# Devise for authentication
+# Authentication
 gem 'devise', '~> 3.1.1'
+gem 'omniauth', '~> 1.1.4'
+gem 'omniauth-github', '~> 1.1.1'
 
+# Session store
+gem 'activerecord-session_store', '0.0.1'
+
+# Will paginate
 gem 'will_paginate', '~> 3.0.5'
+
+# Markup
 gem 'redcarpet', '~> 3.0.0'
+
+# Search
 gem 'textacular', '~> 3.0'
 
 group :doc do

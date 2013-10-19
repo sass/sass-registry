@@ -12,6 +12,8 @@ SassRegistry::Application.routes.draw do
     sign_out: 'logout',
     sign_up:  'signup',
     registration: 'account'
+  }, controllers: {
+    omniauth_callbacks: 'omniauth_callbacks'
   }
 
   root 'home#index'
