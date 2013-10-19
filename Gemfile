@@ -49,6 +49,9 @@ gem 'redcarpet', '~> 3.0.0'
 # Search
 gem 'textacular', '~> 3.0'
 
+# Exceptions
+gem 'rollbar'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
