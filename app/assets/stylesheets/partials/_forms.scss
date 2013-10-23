@@ -1,0 +1,93 @@
+input {
+  &[type="text"]:not(.search), &[type="email"], &[type="password"] {
+    @include rhythm-borders(1px, .5);
+    display: block;
+    border: {
+      color: $color-border;
+      radius: .25em;
+    }
+    padding: {
+      right: 1em;
+       left: 1em;
+    }
+    vertical-align: middle;
+    width: 225px;
+    @each $placeholder in "-moz", ":-moz", "-ms", ":-webkit" {
+      &:#{$placeholder}-placeholder { color: $color-text-weak; }
+    }
+    @include box-shadow(0 1px 1px $color-shadow inset);
+    @include transition(color-border ease-in-out 0.15s, box-shadow ease-in-out 0.15s);
+
+    &:focus {
+      @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(red($color-accent), green($color-accent), blue($color-accent), 0.6));
+      color-border: $color-accent;
+      outline: 0;
+      background: $color-background;
+    }
+  }
+
+  &[type="radio"],
+  &[type="checkbox"] {
+    box-sizing: border-box;
+    margin: 4px 0 0 {
+      top: 1px \9;
+    }
+    line-height: normal;
+  }
+}
+
+fieldset {
+  border: 1px solid #dddddd;
+  padding: 5px 20px 20px;
+  margin: 1.5em 0;
+  @include round-corners(5px);
+  @include clearfix;
+  legend {
+    color: #333333;
+    font-size: 1.1em;
+    margin-left: -5px;
+    span {
+      background-color: white;
+      padding: 5px;
+    }
+  }
+}
+p {
+  span.hint {
+    color: #999999;
+    font-size: 90%;
+    display: block;
+  }
+  label {
+    color: #666666;
+    display: block;
+    span.hint {
+      font-size: 85%;
+      display: inline;
+    }
+    &.checkbox {
+      display: inline;
+    }
+  }
+  &.description {
+    color: #333333;
+  }
+}
+.set {
+  border-bottom: 1px solid white;
+  @include clearfix;
+  p {
+    float: left;
+    margin: 0.75em 1em 0 0;
+  }
+}
+textarea {
+  width: 98%;
+  padding: 6px 4px;
+  font-family: $font-family-text;
+  border: 1px solid $color-border;
+  @include box-shadow(0 1px 1px $color-shadow inset);
+  @include transition(color-border ease-in-out 0.15s, box-shadow ease-in-out 0.15s);
+  @include rhythm-borders(1px, .5);
+  @include border-radius(.25em);
+}

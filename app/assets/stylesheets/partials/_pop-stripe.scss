@@ -1,0 +1,6 @@
+.pop-stripe {
+  height: .25em;
+  position: relative;
+  z-index: 1000;
+  @include background-image(linear-gradient(left, $hopbush 0%, $hopbush 8.33333%, $bouquet 8.33333%, $bouquet 16.66667%, $venus 16.66667%, $venus 25%, $patina 25%, $patina 33.33333%, $nebula 33.33333%, $nebula 41.66667%, $white 41.66667%, $white 50%, $dawn-pink 50%, $dawn-pink 58.33333%, $wafer 58.33333%, $wafer 66.66667%, $iron 66.66667%, $iron 75%, $regent-grey 75%, $regent-grey 83.33333%, $pale-sky 83.33333%, $pale-sky 91.66667%, $midnight-blue 91.66667%, $midnight-blue 100%));
+}

@@ -1,0 +1,153 @@
+.account-ctn {
+  background: rgba($white, .5);
+  width: 100%;
+  padding: .25em 0;
+  @include clearfix;
+}
+
+.account_links {
+  text-align: right;
+  width: 95%;
+}
+
+.banner {
+  padding:1.5em 0;
+  width: 100%;
+  @include clearfix;
+  * { 
+    vertical-align:middle
+  }
+  .container {
+    position:relative;
+    width: 90%;
+  }
+}
+
+.site-brand {
+  font-size:1em;
+  img {
+    -webkit-transition-property:height;
+    -moz-transition-property:height;
+    -o-transition-property:height;
+    transition-property:height;
+    height:3em
+  }
+}
+.banner-toggle button {
+  -webkit-box-shadow:none;
+  -moz-box-shadow:none;
+  box-shadow:none;
+  border-color:transparent;
+  background:none;
+  color:inherit
+}
+
+@media (min-width: 48em){
+  .site-brand {
+    float:left;
+    margin-right:2.12766%;
+    img { height:6em}
+  }
+}
+
+.banner-toggle {
+  position:absolute;
+  top:0;
+  right:2.12766%;
+  button{
+    width:48px;
+    height:48px;
+    padding:0
+  }
+  .icon-bar{
+    margin-top:0.375em;
+    margin-bottom:0.375em;
+    display:block;
+    margin-right:auto;
+    margin-left:auto;
+    width:2em;
+    height:0.125em;
+    background-color:#c69;
+  }
+}
+
+@media (min-width: 48em){
+  .banner-toggle {
+    display:none
+  }
+
+}
+
+.navigation {
+  padding-top:1.5em;
+  li {
+    margin-bottom:0.75em;
+    &:last-child {
+      margin-bottom:0
+    }
+  }
+  a:not(.button) {
+    padding: 0.75em 4.25532%;
+    display:block;
+    background:#ecedef;
+    &:hover,&:focus {
+      background:#dadbdf
+    }
+  }
+}
+
+@media (min-width: 30em){
+  .navigation {
+    margin-right:0;
+    margin-left:0;
+    li {
+      width:48.93617%;
+      float:left;
+      margin-right:2.12766%;
+      &:nth-child(odd){
+        float:right;
+        margin-right:0
+      }
+    }
+  }
+}
+
+@media (min-width: 48em){
+  .navigation{
+    width:74.46809%;
+    float:right;
+    background:none
+  }
+
+  .navigation.collapse{
+    display:block !important
+  }
+
+  .navigation ul{
+    white-space:nowrap;
+    text-align:right
+  }
+
+  .navigation li{
+    float:none;
+    display:inline-block;
+    margin-right:0;
+    margin-left:4.25532%;
+    margin-bottom:0;
+    width:auto
+  }
+
+  .navigation li:nth-child(odd){
+    float:none;
+    margin-right:0
+  }
+
+  .navigation li:last-child{
+    margin-right:0
+  }
+
+  .navigation a:not(.button),.navigation a:not(.button):hover,.navigation a:not(.button):focus{
+    background:none;
+  }
+
+}
