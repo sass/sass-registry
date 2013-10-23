@@ -68,9 +68,9 @@ button {border: none;}
   position: absolute;
   top: 0;
   right: 0;
-  background: url("octocat.png") no-repeat scroll 9px 8px / 41px auto $color-primary;
+  background: image-url("octocat.png") no-repeat scroll 9px 8px / 41px auto $color-primary;
   &:hover:not([disabled]), &:focus:not([disabled]) {
-    background: url("octocat.png") no-repeat scroll 9px -61px / 41px auto darken($color-primary, 8%);
+    background: image-url("octocat.png") no-repeat scroll 9px -61px / 41px auto darken($color-primary, 8%);
     text-shadow: none;
   }
 }
