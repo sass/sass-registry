@@ -27,7 +27,7 @@
 
     <header class="banner" role="banner">
       <div class="container">
-        <h1 class="site-brand"><%=link_to(image_tag("/assets/logo.png", :height => "96", :alt => "Sass"), root_path) %></h1>
+        <h1 class="site-brand"><%=link_to(image_tag("/assets/images/logo.png", :height => "96", :alt => "Sass"), root_path) %></h1>
         <nav class="navigation collapse" role="navigation">
           <ul>
             <li id="extensions_link" class="<%= "here" if @selected == :extensions %> "><%= link_to "Extensions", extensions_path %></li>
