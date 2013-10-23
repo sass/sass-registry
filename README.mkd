@@ -23,11 +23,15 @@
 
         sudo env ARCHFLAGS="-arch x86_64" gem install --no-ri --no-rdoc pg
 
-5. Bundle install:
+6. Clone the repository:
+
+        git clone git@github.com:sass/sass-registry.git
+
+7. Bundle install:
 
         bundle install
 
-6. Boostrap the database:
+8. Boostrap the database:
 
         bundle exec rake db:migrate
 
