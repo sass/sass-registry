@@ -1,17 +1,26 @@
-#footer {
-  border-top: 2px solid #f0f0f0;
-  padding: 20px 0;
-  color: #aaaaaa;
-  font-size: 95%;
-  margin: 15px 20px 0;
-  p {
-    margin-bottom: 0.5em;
-  }
-  a {
-    color: #888888;
-    &:hover {
-      text-decoration: none;
-      color: #666666;
+@mixin sticky-footer($footer_height, $root_selector:".site", $root_footer_selector:".push", $footer_selector:"footer") {
+  html, body {height: 100%;}
+  #{$root_selector} {
+    width: 100%;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -#{$footer_height};
+    #{$root_footer_selector} {
+      height: #{$footer_height};
     }
   }
+  #{$footer_selector} {
+    clear: both;
+    position: relative;
+    height: #{$footer_height};
+  }
+}
+@include sticky-footer(5em);
+
+.footer {
+  color: #aaaaaa;
+  font-size: .8em;
+  padding: 3em 0 2em;
+  text-align: center;
 }

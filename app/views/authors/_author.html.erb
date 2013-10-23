@@ -6,7 +6,7 @@
     <div class="name">
       <%= link_to_author author %>
       <% unless defined? hide_edit && hide_edit %>
-        <%= link_to "Edit", edit_author_path(author), :class=>"action" if can_edit?(author) %>
+        <%= link_to "Edit", edit_author_path(author), :class=>"button" if can_edit?(author) %>
       <% end %>
     </div>
     <div class="location">

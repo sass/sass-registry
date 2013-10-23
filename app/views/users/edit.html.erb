@@ -2,6 +2,7 @@
 <%- @h1 = "Edit Your Profile" %>
 <%- @selected = :profile %>
 
+<h2><%= @h1 || @title %></h2>
 <%= form_for @user, url: {action: 'update'} do |f| %>
 
   <div class="full_size_avatar">

@@ -2,10 +2,11 @@
 <%- @title << " extension" unless @title.match(/extension/) %>
 <%- @title << " - Sass" %>
 <%- h1 = h(@extension.name) %>
-<%- h1 += " ".html_safe + link_to("Edit", edit_extension_path(@extension), :class => 'action').html_safe if can_edit?(@extension) %>
+<%- h1 += " ".html_safe + link_to("Edit", edit_extension_path(@extension), :class => 'button').html_safe if can_edit?(@extension) %>
 <%- @h1 = h1 %>
 <%- @selected = :extensions %>
 
+<h2><%= @h1 || @title %></h2>
 <% unless true %>
 <div class="screenshot">
   <%= link_to image_tag(@extension.screenshot.url(:medium)), @extension.screenshot.url(:large) %>

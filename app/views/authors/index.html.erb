@@ -2,6 +2,7 @@
 <%- @h1 = "Extension Authors" %>
 <%- @selected = :authors %>
 
+<h2><%= @h1 || @title %></h2>
 <div class="records_count"><%= record_count_for @authors, User, :extension_authors_count %></div>
 
 <%= pagination_for @authors %>

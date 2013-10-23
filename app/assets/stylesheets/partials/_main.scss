@@ -1,72 +1,43 @@
-#main {
-  @include basic-links;
-  @include basic-typography;
-  @include flash-messages;
-  @include error-messages;
-  form {
-    @include basic-form;
+@include flash-messages;
+@include error-messages;
+
+table.attributes {
+  border-collapse: collapse;
+  border-bottom: 1px solid #e5e5e5;
+  width: 100%;
+  margin: 2em 0;
+  tr {
+    border-top: 1px solid #e5e5e5;
+    padding: 2px;
   }
-  a.button, button {
-    @include basic-button;
+  th {
+    color: #aaaaaa;
+    padding: 8px 8px 8px 0;
+    text-align: left;
+    vertical-align: top;
+    width: 9em;
   }
-  table.attributes {
-    border-collapse: collapse;
-    border-bottom: 1px solid #e5e5e5;
-    width: 100%;
-    margin: 2em 0;
-    tr {
-      border-top: 1px solid #e5e5e5;
-      padding: 2px;
-    }
-    th {
-      color: #aaaaaa;
-      padding: 8px 8px 8px 0;
-      text-align: left;
-      vertical-align: top;
-      width: 9em;
-    }
-    td {
-      padding: 8px;
-      ul {
-        list-style: none;
+  td {
+    padding: 8px;
+    ul {
+      list-style: none;
+      padding: 0;
+      li.extension {
+        border: none;
+        margin: 0;
         padding: 0;
-        li.extension {
-          border: none;
-          margin: 0;
-          padding: 0;
-        }
       }
     }
   }
-  p.more {
-    margin-top: 1.5em;
-    span {
-      background-color: #4c94db;
-      color: white;
-      font-weight: normal;
-      padding: 6px 12px 7px;
-      @include round-corners(6px);
-      &:after {
-        content: " →";
-        display: inline;
-      }
-      a {
-        color: white;
-      }
-    }
-  }
-  #actions {
-    float: right;
-    padding-top: 20px;
-  }
-  .big {
-    font-size: 130%;
-  }
-  .badge {
-    color: white;
-    background-color: #454f59;
-    padding: 6px 12px 7px;
-    @include round-corners(8px);
-    @include v-gradient(#555d65, #757d85);
-  }
+}
+#actions {
+  float: right;
+  padding-top: 20px;
+}
+.badge {
+  color: white;
+  background-color: #454f59;
+  padding: 6px 12px 7px;
+  @include round-corners(8px);
+  @include v-gradient(#555d65, #757d85);
 }

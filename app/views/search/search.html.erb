@@ -2,25 +2,19 @@
 <%- @h1 = '' %>
 <%- @selected = :search %>
 
-<% content_for :head do %>
-  <% if results? %>
-    <h1>
-      <%= "#{@extensions.size} of #{pluralize(@extensions.total_entries, "result")} for &#8220;#{h(@query)}&#8221;".html_safe %>
-    </h1>
-  <% else %>
-    <h1>
-      <%= @title %>
-    </h1>
-  <% end %>
+<% content_for :search do %>
   <%= form_tag search_path, :method => "get", :id => "search" do %>
     <p>
-      <label for="q">Search</label>
-      <input class="search" id="q" name="q" type="text" value="<%= @query %>">
+      <!-- <label for="q">Search</label> -->
+      <input class="search" id="q" name="q" type="text" value="<%= @query %>" placeholder="Search for extensions">
     </p>
   <% end %>
 <% end %>
 
 <% if results? %>
+    <h2>
+      <%= "#{@extensions.size} of #{pluralize(@extensions.total_entries, "result")} for &#8220;#{h(@query)}&#8221;".html_safe %>
+    </h2>
   <% if @extensions.total_entries > 0 %>
     <table class="index" id="extensions" style="clear: both">
       <tbody>
@@ -30,5 +24,5 @@
     <%= pagination_for @extensions %>
   <% end %>
 <% else %>
-  <p>Search Sass extensions by name or description, author name or company.</p>
+  <p class="introduction">Search Sass extensions by name or description, author name or company.</p>
 <% end %>

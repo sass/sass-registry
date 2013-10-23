@@ -1,52 +1,222 @@
-html, body {
-  background-color: white;
+html {
+  font-family: $font-family-text;
+  overflow-x: hidden;
+  -ms-text-size-adjust: 100%;
+  text: {
+    rendering: optimizeLegibility;
+    align: left;
+  }
+  color: rgb(72, 76, 85);
+  background: image-url("textures/grey-prism.png") 50% 0;
+  @include background-size(50%);
+  -webkit-tap-highlight-color: rgba(0,0,0, 0);
 }
 
-body {
-  background-color: white;
-  text-align: center;
+
+.hero-image img {
+  max-width: 100%;
+  height: 300px;
+  float: left;
+  margin-right: 3em;
+}
+.introduction {
+  //margin:0 auto;
+  //max-width:37.5em;
+  text-align:center;
+  color:#699;
 }
 
-#header, #navigation, #head, #main, #footer_wrapper {
-  width: 960px;
-  text-align: left;
+@media (min-width: 48em){
+  .introduction {
+    font-size:24px;
+    font-size:1.5em;
+    line-height:1.5em;
+    .content-primary & {
+      text-align:left
+    }
+  }
+}
+
+@media (min-width: 48em){
+  .hero-lockup {
+    @include clearfix;
+    .hero-image {
+      padding-right:2em;
+      padding-bottom:0;
+    }
+    .introduction{
+      padding:0;
+      text-align:left
+    }
+  }
+}
+
+.header-image {
+  display:block;
+  margin:0 auto
+}
+
+.auth-divider {
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  left: 50%;
+  top: 0%;
+  background: none repeat scroll 0% 0% #222;
+  &:before {
+    content:'OR';
+    position:absolute;
+    top:50%;
+    left:-8px;
+    padding:5px 0;
+    margin-top:-20px;
+    font-size:12px;
+    background:#fff;
+    color:#222
+  }
+}
+
+.page-header {
+  @include trailer;
+  @include transition-property(padding);
+  border-color: $color-border;
+
+  &,
+  a { color: $color-accent; }
+}
+
+.body {
+  background: $color-background;
+  min-height: 325px;
+}
+
+.content {
+  @extend .row;
+  @include padding-trailer(2);
+}
+.main {
+  @include breakpoint(48em) {
+    @include padding-leader(2);
+    @include padding-trailer(2);
+  }
+}
+.container {
+  *zoom:1;
+  max-width:90%;
+  margin-left:auto;
+  margin-right:auto
+}
+
+.container:after {
+  content:"";
+  display:table;
+  clear:both
+}
+
+.row,.content {
+  margin-left:-2.12766%;
+  padding-left:2.12766%;
+  margin-right:-2.12766%;
+  padding-right:2.12766%
+}
+
+.row,.content {
+  *zoom:1
+}
+
+.row:before,.content:before,.row:after,.content:after{
+  display:table;
+  content:" "
+}
+
+.row:after,.content:after {
+  clear:both
+}
+
+.contentinfo {
+  @include padding-leader;
+  @include padding-trailer;
+  color: $color-text-weak;
+
+  .container {
+    @include padding-leader;
+    @include padding-trailer;
+    height: 100%;
+  }
+
+  ul {
+    font-size: .75em;
+    list-style-type: none;
+    @include adjust-leading-to(1);
+  }
+
+  p {
+    @include padding-trailer(.25);
+    margin: {
+      right: 0;
+      left:  0;
+    }
+
+    &:last-child { padding-bottom: 0; }
+  }
+
+  a {
+    color: $color-text;
+
+    &:hover,
+    &:focus { color: $color-text-strong; }
+  }
+}
+
+.contentinfo-tools,
+.contentinfo-social { @include padding-leader($font-size: .75em); }
+
+.contentinfo-tools ul {
+  //@extend %horizontal-list;
+  font-size: 1em;
+}
+
+@include breakpoint(48em) {
+  .contentinfo {
+    padding: {
+         top: 0;
+      bottom: 0;
+    }
+    height: rhythm(6);
+
+    .container { text-align: left; }
+
+    //ul { @extend %table-layout-tablet-large; }
+
+    //li { @extend %table-layout-cell-tablet-large; }
+  }
+
+  .contentinfo-tools,
+  .contentinfo-social {
+    padding: 0;
+    width: 1px;
+    white-space: nowrap;
+  }
+
+  .contentinfo-tools ul li {
+    display: table-cell;
+    margin: 0;
+    padding-left: 2em;
+  }
+
+  .contentinfo-social {
+    padding-left: 4em;
+    line-height: 0;
+  }
+}
+.secondary-info {
+  width: 58.8541667%;
+  float: left;
+  &:last-child {width: 30.7291667%;float: right;}
+}
+
+.login, .register {
+  position: relative;
+  width: 60%;
   margin: 0 auto;
-  overflow: hidden;
-}
-
-#header_wrapper {
-  background: #454f59;
-  color: white;
-  @include v-gradient(#2e3842, #5c6670);
-}
-
-#navigation_wrapper {
-  background: #e5e5e5;
-  @include v-gradient(white, #cdcdcd);
-}
-
-#head_wrapper {
-  background-color: #e9f2ff;
-}
-
-#content {
-  padding: 20px;
-}
-
-#main.content_with_sidebar {
-  background: transparent url(/images/vertical_line.png) 615px top repeat-y;
-  margin-bottom: 10px;
-  @include clearfix;
-
-  #content {
-    width: 565px;
-    padding: 20px 20px 10px;
-    float: left;
-  }
-
-  #sidebar {
-    float: right;
-    width: 295px;
-    padding: 20px 20px 10px 0;
-  }
 }

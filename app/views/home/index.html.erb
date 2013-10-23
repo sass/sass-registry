@@ -2,21 +2,33 @@
 <%- @h1 = '' %>
 <%- @selected = :home %>
 
-<% content_for :head do %>
-  <h1>Find, Browse, and Share&#8230;</h1>
-  <p> 
-    Sass extensions for almost every need.
-    Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
-  </p>
+<% content_for :pageheader do %>
+  <h1>Find, Browse, &amp; Share&#8230;</h1>
+<% end %>
+
+<% content_for :search do %>
   <%= form_tag search_path, :method => "get", :id => "search" do %>
     <p>
-      <label for="q">Search</label>
-      <input class="search" name="q" id="q" type="text">
+      <!-- <label for="q">Search</label> -->
+      <input class="search" name="q" id="q" type="text" placeholder="Search for extensions">
     </p>
   <% end %>
 <% end %>
 
-<h2>New Extensions</h2>
+<% content_for :hero do %>
+  <div class="hero-lockup">
+    <div class="hero-image">
+      <img src="/assets/illustrations/plug.png">
+      <p class="introduction">
+        Sass extensions for almost every need.
+        Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<aside class="secondary-info">
+<h3>New Extensions</h3>
 
 <table id="extensions" class="index mini">
   <tbody>
@@ -24,11 +36,11 @@
   </tbody>
 </table>
 
-<p class="more">
-  <span><%= link_to "More Extensions", extensions_path %>
+<%= link_to "More Extensions", extensions_path, :class=>"button" %>
+</aside>
 
-<% content_for :sidebar do %>
-  <h2>Extension Authors</h2>
+<aside class="secondary-info">
+  <h3>Extension Authors</h3>
   
   <table id="authors" class="index mini" border="0" cellpadding="0" cellspacing="0">
     <tbody>
@@ -51,7 +63,5 @@
     </tbody>
   </table>
 
-  <p class="more">
-    <span><%= link_to "More Authors", authors_path %></span>
-  </p>
-<% end %>
+  <%= link_to "More Authors", authors_path, :class=>"button" %>
+</aside>

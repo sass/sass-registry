@@ -1,48 +1,125 @@
-#navigation {
-  ul.primary_links {
-    font-size: 105%;
-    height: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 15px 20px;
-    a {
-      &:link, &:visited {
-        padding: 3px 15px;
-        color: #333333;
-        text-decoration: none;
-      }
-      &:hover {
-        text-decoration: underline;
-      }
+.account-ctn {
+  background: rgba($white, .5);
+  width: 100%;
+  padding: .25em 0;
+  @include clearfix;
+}
+
+.account_links {
+  text-align: right;
+  width: 95%;
+}
+
+.banner {
+  padding:1.5em 0;
+  width: 100%;
+  @include clearfix;
+  * { vertical-align:middle }
+  .container {
+    position:relative;
+    width: 90%;
+  }
+}
+
+.site-brand {
+  font-size:1em;
+  @include breakpoint($large) {
+    float:left;
+    margin-right:2.12766%;
+  };
+  img {
+    @include transition-property(height);
+    height:3em;
+    @include breakpoint($large) { height:6em}
+  }
+}
+
+.banner-toggle {
+  position:absolute;
+  top:0;
+  right:2.12766%;
+  @include breakpoint($large) {display:none}
+  button{
+    width:48px;
+    height:48px;
+    padding:0;
+    -webkit-box-shadow:none;
+    -moz-box-shadow:none;
+    box-shadow:none;
+    border-color:transparent;
+    background:none;
+    color:inherit
+  }
+  .icon-bar{
+    margin-top:0.375em;
+    margin-bottom:0.375em;
+    display:block;
+    margin-right:auto;
+    margin-left:auto;
+    width:2em;
+    height:0.125em;
+    background-color:#c69;
+  }
+}
+
+.navigation {
+  @include breakpoint($medium) {
+    margin-right:0;
+    margin-left:0;
+  };
+  @include breakpoint($large) {
+    width:74.46809%;
+    float:right;
+    background:none;
+    &.collapse {display:block !important}
+    ul {
+      white-space:nowrap;
+      text-align:right;
     }
-    li {
-      display: inline;
-      &.here {
-        a {
-          &:link, &:visited {
-            background-color: #454f59;
-            color: #f0f0f0;
-            @include round-corners(20px);
-            @include v-gradient(#555d65, #757d85);
-          }
-          &:hover {
-            color: white;
-          }
-        }
+  }
+  padding-top:1.5em;
+  li {
+    @include breakpoint($medium) {
+      width:48.93617%;
+      float:left;
+      margin-right:2.12766%;
+    };
+    margin-bottom:0.75em;
+    @include breakpoint($large) {
+      float:none;
+      display:inline-block;
+      margin-right:0;
+      margin-left:4.25532%;
+      margin-bottom:0;
+      width:auto
+    }
+    &:last-child {
+      margin-bottom:0;
+      @include breakpoint($large) {margin-right:0;}
+    }
+    &:nth-child(odd){
+      @include breakpoint($medium) {
+        float:right;
+        margin-right:0
+      };
+      @include breakpoint($large) {
+        float:none;
+        margin-right:0
       }
     }
   }
-  .account_links {
-    color: #666666;
-    float: right;
-    font-size: 1em;
-    padding: 15px 20px;
-    a, a:visited {
-      color: #0066cc;
-      text-decoration: underline;
+  a:not(.button) {
+    padding: 0.75em 4.25532%;
+    display:block;
+    background:#ecedef;
+    &:hover,&:focus {
+      background:#dadbdf;
+      @include breakpoint($large) {
+        background:none;
+      }
     }
-    a:hover {
-      text-decoration: none;
+    @include breakpoint($large) {
+      background:none;
     }
   }
 }

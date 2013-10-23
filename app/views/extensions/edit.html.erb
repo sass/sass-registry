@@ -2,6 +2,7 @@
 <%- @h1 = "Edit Extension" %>
 <%- @selected = :extensions %>
 
+<h2><%= @h1 || @title %></h2>
 <%= form_for @extension, :html => {:multipart => true} do |f| %>
   <%= render :partial => "fields", :locals => {:f => f} %>
   <p class="buttons">

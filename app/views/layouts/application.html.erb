@@ -7,19 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="site">
 
-  <div id="header_wrapper">
-    <div id="header">
-      <div id="logo">
-        <div class="title">Sass</div>
-        <div class="subtitle">Extension Registry</div>
-        <div class="parent_site"><%= link_to "sass-lang.com", "http://sass-lang.com" %></div>
-      </div>
-    </div>
-  </div>
+    <div class="pop-stripe"></div>
 
-  <div id="navigation_wrapper">
-    <div id="navigation">
+    <div class="account-ctn">
       <div class="account_links">
         <% if user_signed_in? %>
           Welcome back <%= link_to current_user, edit_user_path(current_user), :class => (@selected == :profile ? "here" : nil) %>!
@@ -31,55 +23,96 @@
           <%= link_to "Login", login_path, :class => ("here" if @selected == :login) %>
         <% end %>
       </div>
-      <ul class="primary_links">
-        <li id="index_link" class="<%= "here" if @selected == :home %> "><%= link_to "Home", root_path %></li>
-        <li id="extensions_link" class="<%= "here" if @selected == :extensions %> "><%= link_to "Extensions", extensions_path %></li>
-        <li id="authors_link" class="<%= "here" if @selected == :authors %> "><%= link_to "Authors", authors_path %></li>
-        <li id="search_link" class="<%= "here" if @selected == :search %> "><%= link_to "Search", search_path %></li>
-      </ul>
     </div>
-  </div>
 
-  <% if content_for? :head %>
-    <div id="head_wrapper">
-      <div id="head">
-        <%= yield :head %>
-      </div>
-    </div>
-  <% end %>
-
-  <div id="main_wrapper">
-    <div id="main" class="<%= "content_with_sidebar" if content_for? :sidebar %>">
-      <div id="content">
-        <% flash.keys.each do |key| %>
-          <p id="<%= key %>"><%= flash[key] %>
-        <% end %>
-        <% if content_for? :actions %>
-          <div id="actions">
-            <%= yield :actions %>
-          </div>
-        <% end %>
-        <% unless (@h1 || @title).blank? %>
-          <h1><%= @h1 || @title %></h1>
-        <% end %>
-        <%= yield %>
-      </div>
-      <% if content_for? :sidebar %>
-        <div id="sidebar">
-          <%= yield :sidebar %>
+    <header class="banner" role="banner">
+      <div class="container">
+        <h1 class="site-brand"><%=link_to(image_tag("/assets/logo.png", :height => "96", :alt => "Sass"), root_path) %></h1>
+        <nav class="navigation collapse" role="navigation">
+          <ul>
+            <li id="extensions_link" class="<%= "here" if @selected == :extensions %> "><%= link_to "Extensions", extensions_path %></li>
+            <li id="authors_link" class="<%= "here" if @selected == :authors %> "><%= link_to "Authors", authors_path %></li>
+            <li id="search_link" class="<%= "here" if @selected == :search %> "><%= link_to "Search", search_path %></li>
+            <li><%= link_to "sass-lang.com →", "http://sass-lang.com", :class=>"button small" %></li>
+          </ul>
+        </nav>
+        <div class="banner-toggle">
+          <!-- <button data-target='.navigation' data-toggle='collapse' type='button'> -->
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
         </div>
-      <% end %>
-    </div>
-  </div>
+      </div>
+    </header>
 
-  <div id="footer_wrapper">
-    <div id="footer">
+    <% if content_for? :pageheader %>
+      <div class='page-header'>
+        <div class='container'>
+          <%= yield :pageheader %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if content_for? :search %>
+       <div class="search-bar">
+          <%= yield :search %>
+      </div>
+    <% end %>
+
+      <div class='body'>
+        <div class='container'>
+          <div class='content'>
+            <main class='main' role='main'>
+              <% if content_for? :hero %>
+                <div class="heading">
+                  <%= yield :hero %>
+                </div>
+              <% end %>
+              <div id="content">
+                <% flash.keys.each do |key| %>
+                  <p id="<%= key %>"><%= flash[key] %>
+                <% end %>
+                <% if content_for? :actions %>
+                  <div id="actions">
+                    <%= yield :actions %>
+                  </div>
+                <% end %>
+                <%= yield %>
+              </div>
+             </main>
+          </div>
+        </div>
+      </div>
+    
+    <div class="push"></div>
+
+  </div> <!-- .site -->
+
+<!--     <footer class='contentinfo' role='contentinfo'>
+      <nav class='container'>
+        <ul>
+          <li class='contentinfo-legal'>
+            The <a href="http://github.com/sass/sass-registry">source code</a> for this website is available on GitHub.
+        Please direct bug reports, feature requests, and comments to the GitHub <a href="http://github.com/sass/sass-registry/issues">issue tracker</a>.
+          </li>
+          <li class='contentinfo-tools'>
+            <ul>
+              <li><a href="/styleguide">Style Guide</a></li>
+              <li><a href="https://github.com/sass/sass-site">Site Repo</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+ -->
+  <footer>
+    <div class="footer">
       <p>
         The <a href="http://github.com/sass/sass-registry">source code</a> for this website is available on GitHub.
         Please direct bug reports, feature requests, and comments to the GitHub <a href="http://github.com/sass/sass-registry/issues">issue tracker</a>.
       </p>
     </div>
-  </div>
+  </footer>
 
 </body>
 </html>
