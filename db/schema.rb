@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018235451) do
+ActiveRecord::Schema.define(version: 20131026193937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,16 +20,19 @@ ActiveRecord::Schema.define(version: 20131018235451) do
     t.string   "name"
     t.string   "description",               limit: 1000
     t.text     "installation_instructions"
-    t.string   "supports_sass_version"
+    t.string   "supports"
     t.string   "repository_url"
     t.string   "repository_type"
     t.string   "download_url"
     t.string   "download_type"
     t.string   "homepage_url"
-    t.string   "current_version"
+    t.string   "version"
     t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "documentation_url"
+    t.integer  "watcher_count"
+    t.datetime "last_pushed_at"
   end
 
   create_table "sessions", force: true do |t|

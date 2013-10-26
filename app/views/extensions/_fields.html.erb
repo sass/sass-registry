@@ -7,8 +7,8 @@
       <%= f.text_field :name, :size => 33, :class => "textbox" %>
     </p>
     <p>
-      <label for="extension_current_version">Version</label>
-      <%= f.text_field :current_version, :size => 8, :class => "textbox" %>
+      <label for="extension_version">Version</label>
+      <%= f.text_field :version, :size => 8, :class => "textbox" %>
     </p>
   </div>
 
@@ -21,8 +21,8 @@
 <fieldset>
   <legend><span>Compatibility</span></legend>
   <p>
-    <label for="extension_supports_sass_version">Sass Version</label>
-    <%= f.text_field :supports_sass_version, :size => 8, :class => "textbox" %>
+    <label for="extension_supports">Sass Version</label>
+    <%= f.text_field :supports, :size => 8, :class => "textbox" %>
     <span class="hint" style="display: inline">(the highest version tested)</span>
   </p>
 </fieldset>

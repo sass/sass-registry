@@ -7,8 +7,8 @@ one:
   author_id: 1
   description: MyString
   homepage_url: MyString
-  current_version: MyString
-  supports_sass_version: MyString
+  version: MyString
+  supports: MyString
   repository_type: MyString
   download_type: MyString
   installation_instructions: MyString
@@ -20,8 +20,8 @@ two:
   author_id: 1
   description: MyString
   homepage_url: MyString
-  current_version: MyString
-  supports_sass_version: MyString
+  version: MyString
+  supports: MyString
   repository_type: MyString
   download_type: MyString
   installation_instructions: MyString

@@ -15,10 +15,10 @@
       <%= extension.description %>
     </div>
     <div class="meta">
-      <% unless extension.supports_sass_version.blank? %>
+      <% unless extension.supports.blank? %>
         <span class="supports">
           Supports
-          <%= extension.supports_sass_version %>
+          <%= extension.supports %>
         </span>
       <% end %>
       <% unless defined? hide_author && hide_author %>

@@ -1,11 +1,12 @@
 SassRegistry::Application.routes.draw do
   get 'search', to: 'search#search'
 
+  get '/extensions/import', to: 'extensions#import', as: 'import_extension'
   resources :extensions
 
-  resources :authors, only: [:show, :index]
+  resources :authors, only: %w(show index)
 
-  resources :users, only: [:edit, :update]
+  resources :users, only: %w(edit update)
 
   devise_for :users, path: '/', path_names: {
     sign_in:  'login',

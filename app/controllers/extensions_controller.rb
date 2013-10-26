@@ -39,25 +39,37 @@ class ExtensionsController < ApplicationController
   def new
     @extension = Extension.new
   end
+
+  # GET /extensions/import
+  def import
+    @extension = Extension.new
+  end
   
   # GET /extensions/1/edit
   def edit
   end
-  
+
   # POST /extensions
   # POST /extensions.xml
   def create
-    @extension = Extension.new(extension_params)
+    if params[:project_url]
+      @extension = extension_from_project_url(params[:project_url])
+      @from_url = import_extension_url
+    else
+      @extension = Extension.new(extension_params)
+      @from_url = new_extension_url
+    end
     @extension.author = current_user
     respond_to do |format|
       if @extension.save
-        format.html { flash[:notice] = 'Created successfully!'; redirect_to extension_url(@extension) }
+        format.html { redirect_to extension_url(@extension), notice: 'Created successfully!' }
         format.js
         format.xml  { head :created, :location => extension_url(@extension) }
       else
-        format.html { flash[:error] = 'There was a problem!'; render :action => "new", :status => 422 }
+        logger.info "Errors: " + @extension.errors.inspect
+        format.html { redirect_to @from_url, flash: { error: @extension.errors.to_a.first } }
         format.js
-        format.xml  { render :xml => @extension.errors.to_xml, :status => :unprocessible_entity }
+        format.xml  { render xml: @extension.errors.to_xml, status: :unprocessible_entity }
       end
     end
   end
@@ -103,15 +115,66 @@ class ExtensionsController < ApplicationController
     end
 
     def extension_params
-      params.require(:extension).permit(:name, :current_version, :homepage_url, :supports_sass_version, :repository_url, :repository_type, :download_url, :download_type, :description, :installation_instructions, :screenshot)
+      params.require(:extension).permit(*permitted_extension_params)
+    end
+
+    def permitted_extension_params
+      #add tags?
+      [
+        :name,
+        :version,
+        :description,
+        :homepage_url,
+        :documentation_url,
+        :supports,
+        :repository_url,
+        :repository_type,
+        :download_url,
+        :download_type,
+        :installation_instructions,
+        :last_pushed_at,
+        :watcher_count
+      ]
+    end
+
+    def extension_from_project_url(project_url)
+      username = project_url[/\:(.*?)\//, 1]
+      reponame = project_url[/\/(.*?).git/, 1]
+
+      # Grab info about the repo from GitHub
+      repo_info = Octokit.repo("#{username}/#{reponame}")
+    
+      # Some of these things we can populate from the repo info if not provided by the manifest
+      defaults = {
+        name: reponame,
+        description: repo_info.description,
+        homepage_url: repo_info.homepage
+      }
+
+      # Overrides will be ignored if specified in the manifest
+      overrides = {
+        repository_url: project_url,
+        repository_type: 'Git',
+        last_pushed_at: repo_info.updated_at,
+        watcher_count: repo_info.watchers
+      }
+
+      # Fetch and merge the manifest
+      data = Octokit.contents("#{username}/#{reponame}", path: 'sassmanifest.json', accept: "application/vnd.github-blob.raw")
+      manifest = JSON.parse(data)
+      manifest.reverse_merge!(defaults).merge!(overrides)
+
+      # Use ActionController::Parameters to make sure nothing malicious is being passed
+      safe_params = ActionController::Parameters.new(manifest).permit(*permitted_extension_params)
+
+      Extension.new(safe_params)
     end
     
     def require_correct_permissions
       unless can_edit?(@extension)
         respond_to do |format|
           format.html do
-            flash[:error] = "You can only edit your own extensions."
-            redirect_to extensions_url
+            redirect_to extensions_url, flash: { error: "You can only edit your own extensions." }
           end
           format.xml { head :forbidden }
         end
