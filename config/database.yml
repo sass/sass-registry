@@ -21,6 +21,7 @@ development:
   pool: 5
   username: sass-registry
   password:
+  host: localhost
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -50,6 +51,7 @@ test:
   pool: 5
   username: sass-registry
   password:
+  host: localhost
 
 production:
   adapter: postgresql

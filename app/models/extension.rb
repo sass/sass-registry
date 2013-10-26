@@ -20,6 +20,24 @@ class Extension < ActiveRecord::Base
     25
   end
 
+  def self.permitted_params
+    [
+      :name,
+      :version,
+      :description,
+      :homepage_url,
+      :documentation_url,
+      :supports,
+      :repository_url,
+      :repository_type,
+      :download_url,
+      :download_type,
+      :installation_instructions,
+      :last_pushed_at,
+      :watcher_count
+    ]
+  end
+
   def install_type
     unless repository_type.blank?
       repository_type

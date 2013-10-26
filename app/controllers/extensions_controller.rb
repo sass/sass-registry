@@ -115,57 +115,34 @@ class ExtensionsController < ApplicationController
     end
 
     def extension_params
-      params.require(:extension).permit(*permitted_extension_params)
-    end
-
-    def permitted_extension_params
-      #add tags?
-      [
-        :name,
-        :version,
-        :description,
-        :homepage_url,
-        :documentation_url,
-        :supports,
-        :repository_url,
-        :repository_type,
-        :download_url,
-        :download_type,
-        :installation_instructions,
-        :last_pushed_at,
-        :watcher_count
-      ]
+      params.require(:extension).permit(*Extension.permitted_params)
     end
 
     def extension_from_project_url(project_url)
-      username = project_url[/\:(.*?)\//, 1]
-      reponame = project_url[/\/(.*?).git/, 1]
+      project = GitHubProject.new(project_url)
 
-      # Grab info about the repo from GitHub
-      repo_info = Octokit.repo("#{username}/#{reponame}")
-    
       # Some of these things we can populate from the repo info if not provided by the manifest
       defaults = {
-        name: reponame,
-        description: repo_info.description,
-        homepage_url: repo_info.homepage
+        name: project.reponame,
+        description: project.description,
+        homepage_url: project.homepage
       }
 
       # Overrides will be ignored if specified in the manifest
       overrides = {
-        repository_url: project_url,
+        repository_url: project.repository_url,
         repository_type: 'Git',
-        last_pushed_at: repo_info.updated_at,
-        watcher_count: repo_info.watchers
+        last_pushed_at: project.updated_at,
+        watcher_count: project.watchers
       }
 
       # Fetch and merge the manifest
-      data = Octokit.contents("#{username}/#{reponame}", path: 'sassmanifest.json', accept: "application/vnd.github-blob.raw")
+      data = project.file('sassmanifest.json')
       manifest = JSON.parse(data)
       manifest.reverse_merge!(defaults).merge!(overrides)
 
       # Use ActionController::Parameters to make sure nothing malicious is being passed
-      safe_params = ActionController::Parameters.new(manifest).permit(*permitted_extension_params)
+      safe_params = ActionController::Parameters.new(manifest).permit(*Extension.permitted_params)
 
       Extension.new(safe_params)
     end
