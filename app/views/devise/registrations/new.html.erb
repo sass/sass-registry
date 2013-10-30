@@ -10,17 +10,22 @@
 <h2><%= @h1 || @title %></h2>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
+  <p>
     <%= f.label :name %>
-    <%= f.text_field 'name', class: 'textbox', size: 42, autofocus: true %>
+    <%= f.text_field 'name', class: 'textbox full-width', size: 42, autofocus: true %>
+  </p>
+  <p>
     <%= f.label :email %>
-    <%= f.email_field 'email', class: 'textbox', size: 42 %>
-  <div class="set">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'textbox', size: 18 %>
-      <%= f.label :password_confirmation, "Type password again" %>
-      <%= f.password_field :password_confirmation, class: 'textbox', size: 18 %>
-  </div>
+    <%= f.email_field 'email', class: 'textbox full-width', size: 42 %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'textbox full-width', size: 18 %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation, "Type password again" %>
+    <%= f.password_field :password_confirmation, class: 'textbox full-width', size: 18 %>
+  </p>
   <p class="buttons">
     <button type="submit">Sign up</button>
   </p>

@@ -1,16 +1,17 @@
 @mixin flash-messages {
-  p#notice, p#error {
+  #notice, #error, #alert {
     padding: 1em;
+    margin-bottom: 1em;
     @include round-corners;
   }
-  p#notice {
-    background-color: #e2f9e2;
-    border: 4px solid #a2d5a2;
+  #notice {
+    background-color: scale-color($color-accent, $lightness: 80%);
+    border: 4px solid scale-color($color-accent, $lightness: 20%);
     color: #333333;
   }
-  p#error {
-    background-color: #f9e2e2;
-    border: 4px solid #f3a2a2;
+  #error, #alert {
+    background-color: scale-color($color-primary, $lightness: 80%);
+    border: 4px solid scale-color($color-primary, $lightness: 20%);
     color: #333333;
   }
 }

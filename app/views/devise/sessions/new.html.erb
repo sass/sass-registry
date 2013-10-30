@@ -10,24 +10,29 @@
 <h2><%= @h1 || @title %></h2>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-  <%= f.label :email %>
-  <%= f.email_field 'email', class: 'textbox', size: 42, autofocus: true %>
-  <div class="set">
+  <p>
+    <%= f.label :email %>
+    <%= f.email_field 'email', class: 'textbox full-width', size: 42, autofocus: true %>
+  </p>
+  <p>
     <%= f.label :password %>
-    <%= f.password_field :password, class: 'textbox', size: 20 %>
-    <%- if devise_mapping.recoverable? %>
-      <small style="display: block; margin-top: 0.25em">
-      <%= link_to "I forgot my password", new_password_path(resource_name) %><br />
-      </small>
-    <% end -%>
-    <% if devise_mapping.rememberable? -%>
+    <%= f.password_field :password, class: 'textbox full-width', size: 20 %>
+  </p>
+  <%- if devise_mapping.recoverable? %>
+    <small style="display: block; margin-top: 0.25em">
+    <%= link_to "I forgot my password", new_password_path(resource_name) %><br />
+    </small>
+  <% end -%>
+  <% if devise_mapping.rememberable? -%>
+    <p>
       <%= f.check_box :remember_me, class: 'checkbox' %>
       <%= f.label :remember_me, 'Keep me logged in', class: 'checkbox' %>
-    <% end -%>
-  </div>
-
+    </p>
+  <% end -%>
   <div class="buttons">
     <button type="submit">Log in</button>
+    &nbsp;
+    <%= link_to "Need an account?", signup_path %>
   </div>
 <% end %>
 
