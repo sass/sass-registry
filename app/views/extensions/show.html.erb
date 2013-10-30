@@ -2,16 +2,10 @@
 <%- @title << " extension" unless @title.match(/extension/) %>
 <%- @title << " - Sass" %>
 <%- h1 = h(@extension.name) %>
-<%- h1 += " ".html_safe + link_to("Edit", edit_extension_path(@extension), :class => 'button').html_safe if can_edit?(@extension) %>
 <%- @h1 = h1 %>
 <%- @selected = :extensions %>
 
 <h2><%= @h1 || @title %></h2>
-<% unless true %>
-<div class="screenshot">
-  <%= link_to image_tag(@extension.screenshot.url(:medium)), @extension.screenshot.url(:large) %>
-</div>
-<% end %>
 
 <div style="width: 75%">
   <div class="big">
@@ -25,7 +19,7 @@
     </tr>
     <% unless @extension.homepage_url.blank? %>
       <tr>
-        <th>Website</th>
+        <th>Homepage</th>
         <td><%= link_to @extension.homepage_url, @extension.homepage_url %>
         </td>
       </tr>
@@ -69,20 +63,16 @@
   <div class="installation">
     <h3>Installation</h3>
     <p>At the command prompt, in the root of your Sass project, type:</p>
-    <pre><code>sass install <%= @extension.name %></code></pre>
+    <pre><code>sass install <%= @extension.slug %></code></pre>
     <% unless @extension.installation_instructions.blank? %>
       <%= sanitize(markdown(@extension.installation_instructions)) %>
     <% end %>
   </div>
 
   <% if can_edit?(@extension) %>
-    <p><%= link_to("Delete", extension_path(@extension), :method => :delete, :confirm => "Are you sure you want to delete this extension?", :class => "button") %></p>
+    <p>
+      <%= link_to("Edit", edit_extension_path(@extension), :class => 'button').html_safe if can_edit?(@extension) %>
+      <%= link_to("Delete", extension_path(@extension), :method => :delete, :confirm => "Are you sure you want to delete this extension?", :class => "button") %>
+    </p>
   <% end %>
 </div>
-
-<% unless true %>
-<div class="screenshot-zoom">
-  <%= image_tag(@extension.screenshot.url(:large)) %>
-  <%= link_to "close", "#" %>
-</div>
-<% end %>

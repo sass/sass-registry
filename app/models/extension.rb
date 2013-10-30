@@ -46,8 +46,12 @@ class Extension < ActiveRecord::Base
     end
   end
 
+  def slug
+    name.strip.gsub(/[^a-z0-9]+/i, '-').downcase
+  end
+
   def to_param
-    [id, name].join('-').strip.gsub(/[^a-z0-9]+/i, '-').downcase
+    [id, slug].join('-')
   end
 
   def to_xml(options = {})
