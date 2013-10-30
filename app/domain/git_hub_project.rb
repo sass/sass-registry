@@ -3,9 +3,11 @@ class GitHubProject
   delegate :description, :homepage, :updated_at, :watchers, to: :info
 
   def initialize(url)
-    @repository_url = url
-    @username = url[/\:(.*?)\//, 1]
-    @reponame = url[/\/(.*?).git/, 1]
+    if %r{github\.com[:/](.+?)/(.+?)(?:\.git|)$}i.match(url.strip)
+      @username = $1
+      @reponame = $2
+      @repository_url = "git@github.com:#{username}/#{reponame}.git"
+    end
   end
 
   def info
