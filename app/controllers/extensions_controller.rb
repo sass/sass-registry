@@ -1,6 +1,6 @@
 class ExtensionsController < ApplicationController
   before_filter :assign_extension, :only => [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, :only => [:new, :edit, :update, :destroy]
+  before_filter :authenticate_user!, :only => [:new, :import, :edit, :update, :destroy]
   before_filter :require_correct_permissions, :only => [:edit, :update, :destroy]
 
   ORDER_BY = {
@@ -66,7 +66,6 @@ class ExtensionsController < ApplicationController
         format.js
         format.xml  { head :created, :location => extension_url(@extension) }
       else
-        logger.info "Errors: " + @extension.errors.inspect
         format.html { redirect_to @from_url, flash: { error: @extension.errors.to_a.first } }
         format.js
         format.xml  { render xml: @extension.errors.to_xml, status: :unprocessible_entity }
