@@ -2,8 +2,12 @@
 <%- @h1 = "Create account" %>
 <%- @selected = :signup %>
 
-<div class="register">
-  <h2><%= @h1 || @title %></h2>
+<%- if devise_mapping.omniauthable? %>
+  <div class="either-or-grid">
+    <div class="either-or-col1">
+<%- end %>
+
+<h2><%= @h1 || @title %></h2>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -23,7 +27,10 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <div class="auth-divider"></div>
-  <%= link_to "Use info from GitHub", omniauth_authorize_path(resource_name, 'github'), class: "button github-button" %>
-<% end -%>
-</div>
+    </div>
+    <div class="either-or-divider"></div>
+    <div class="either-or-col2">
+      <%= link_to "Signup with GitHub", omniauth_authorize_path(resource_name, 'github'), class: "button github-button" %>
+    </div>
+  </div>
+<%- end %>

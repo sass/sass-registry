@@ -65,9 +65,6 @@ button {border: none;}
 
 .github-button {
   padding-left: 58px !important;
-  position: absolute;
-  top: 0;
-  right: 0;
   background: image-url("octocat.png") no-repeat scroll 9px 8px / 41px auto $color-primary;
   &:hover:not([disabled]), &:focus:not([disabled]) {
     background: image-url("octocat.png") no-repeat scroll 9px -61px / 41px auto darken($color-primary, 8%);

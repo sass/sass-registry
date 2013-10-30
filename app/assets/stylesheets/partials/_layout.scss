@@ -56,26 +56,6 @@ html {
   margin:0 auto
 }
 
-.auth-divider {
-  position: absolute;
-  width: 1px;
-  height: 100%;
-  left: 50%;
-  top: 0%;
-  background: none repeat scroll 0% 0% #222;
-  &:before {
-    content:'OR';
-    position:absolute;
-    top:50%;
-    left:-8px;
-    padding:5px 0;
-    margin-top:-20px;
-    font-size:12px;
-    background:#fff;
-    color:#222
-  }
-}
-
 .page-header {
   @include trailer;
   @include transition-property(padding);
@@ -219,4 +199,45 @@ html {
   position: relative;
   width: 60%;
   margin: 0 auto;
+}
+
+
+.either-or-grid {
+  display: table;
+  width: 100%;
+}
+.either-or-col1, .either-or-col2 {
+  display: table-cell;
+  box-sizing: border-box;
+  width: 45%;
+  vertical-align: middle;
+  padding: 20px;
+}
+.either-or-divider {
+  display: table-cell;
+  position: relative;
+  width: 10%;
+
+  &::before {
+    position: absolute;
+    content: '';
+    background: #f5f5f5;
+    width: 4px;
+    height: 100%;
+    left: 50%;
+    top: 0; 
+    margin-left: -2px;
+  }
+
+  &::after {
+    position: absolute;
+    content: 'OR';
+    background: #fff;
+    color: #222;
+    top: 50%;
+    left: 50%;
+    margin-left: -0.65em;
+    margin-top: -1em;
+    line-height: 2em;
+  }
 }
