@@ -1,19 +1,24 @@
-<%- @title = "Import a Sass Extension from GitHub" %>
-<%- @h1 = "Import Extension" %>
+<%- @title = "Add a Sass Extension" %>
+<%- @h1 = "Import extension" %>
 <%- @selected = :extensions %>
-
-<h2><%= @h1 || @title %></h2>
 
 <%= flash[:errors].to_a.first %>
 
-<%= form_tag extensions_path, method: 'post' do |f| %>
-  <p>
-    <%= label_tag :project_url, "GitHub project URL" %>
-    <%= text_field_tag :project_url %>
-  </p>
-  <p class="buttons">
-    <button type="submit">Add Extension</button>
-    or
-    <%= link_to "Cancel", extensions_path, :class => "cancel" %>
-  </p>
-<% end %>
+<div class="either-or-grid">
+  <div class="either-or-col1">
+    <h2><%= @h1 || @title %></h2>
+    <%= form_tag extensions_path, method: 'post', class: 'mt2' do |f| %>
+      <p>
+        <%= label_tag :project_url, "Enter your GitHub project URL:" %>
+        <%= text_field_tag :project_url, nil, class: 'textbox full-width' %>
+      </p>
+      <p class="buttons">
+        <button type="submit">Add Extension</button>
+      </p>
+    <% end %>
+  </div>
+  <div class="either-or-divider"></div>
+  <div class="either-or-col2 text-center">
+    <%= link_to "Create extension manually", new_extension_path, class: "button" %>
+  </div>
+</div>
