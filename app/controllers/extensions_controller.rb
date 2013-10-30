@@ -137,7 +137,7 @@ class ExtensionsController < ApplicationController
 
       # Fetch and merge the manifest
       data = project.file('sassmanifest.json')
-      manifest = JSON.parse(data)
+      manifest = JSON.parse(data).symbolize_keys
       manifest.reverse_merge!(defaults).merge!(overrides)
 
       # Use ActionController::Parameters to make sure nothing malicious is being passed
