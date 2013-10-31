@@ -27,7 +27,7 @@
     <% unless @extension.repository_url.blank? %>
       <tr>
         <th>Repository</th>
-        <td><%= link_to h(@extension.repository_url), @extension.repository_url %></td>
+        <td><%= @extension.repository_url %></td>
       </tr>
     <% end %>
     <% unless @extension.download_url.blank? %>
