@@ -16,8 +16,8 @@ class ExtensionsController < ApplicationController
     
     respond_to do |format|
       format.html { @extensions = Extension.paginate :page => params[:page], :order => ORDER_BY[@order], :include => :author }
-      format.xml  { @extensions = Extension.find(:all, :order=>"updated_at DESC", :include => :author); render :xml => @extensions }
-      format.atom { @extensions = Extension.find(:all, :order=>"updated_at DESC", :include => :author) }
+      format.xml  { @extensions = Extension.all(:order=>"updated_at DESC", :include => :author); render :xml => @extensions }
+      format.atom { @extensions = Extension.all(:order=>"updated_at DESC", :include => :author) }
     end
   end
   
@@ -110,7 +110,7 @@ class ExtensionsController < ApplicationController
   protected
     
     def assign_extension
-      @extension = Extension.find(params[:id])
+      @extension = Extension.find_by_slug(params[:id])
     end
 
     def extension_params

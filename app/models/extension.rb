@@ -15,6 +15,7 @@ class Extension < ActiveRecord::Base
 
   after_create  :update_cached_fields
   after_destroy :update_cached_fields
+  before_save   :update_slug
 
   def self.per_page
     25
@@ -46,12 +47,8 @@ class Extension < ActiveRecord::Base
     end
   end
 
-  def slug
-    name.strip.gsub(/[^a-z0-9]+/i, '-').downcase
-  end
-
   def to_param
-    [id, slug].join('-')
+    slug
   end
 
   def to_xml(options = {})
@@ -82,6 +79,10 @@ class Extension < ActiveRecord::Base
 
     def update_cached_fields
       User.update_all(['extensions_count = ?', Extension.count(:id, :conditions => { :author_id => author_id })], ["id = ?", author_id])
+    end
+
+    def update_slug
+      self.slug = name.strip.gsub(/[^a-z0-9]+/i, '-').downcase
     end
 
 end

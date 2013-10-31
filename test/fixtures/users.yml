@@ -1,1 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+john:
+  email: "john@uservoice.com"
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+  created_at: <%= Time.now %>
+  updated_at: <%= Time.now %>
