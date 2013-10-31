@@ -2,7 +2,7 @@ class Extension < ActiveRecord::Base
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
 
   validates_presence_of :name
-  validates_uniqueness_of :name, :allow_nil => true
+  validates :name, uniqueness: { case_sensitive: false }, :allow_nil => true
   validates_presence_of :repository_url, :if => proc {|e| e.download_url.blank? }, :message => "required unless download URL given"
   validates_presence_of :download_url, :if => proc {|e| e.repository_url.blank? }, :message => "required unless repository URL given"
   validates_uniqueness_of :repository_url, :if => :repository_url?
