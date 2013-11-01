@@ -53,11 +53,11 @@ class ExtensionsController < ApplicationController
   # POST /extensions.xml
   def create
     if params[:project_url]
-      @extension = extension_from_project_url(params[:project_url])
       @from_url = import_extension_url
+      @extension = extension_from_project_url(params[:project_url])
     else
-      @extension = Extension.new(extension_params)
       @from_url = new_extension_url
+      @extension = Extension.new(extension_params)
     end
     @extension.author = current_user
     respond_to do |format|
@@ -70,6 +70,12 @@ class ExtensionsController < ApplicationController
         format.js
         format.xml  { render xml: @extension.errors.to_xml, status: :unprocessible_entity }
       end
+    end
+  rescue GitHubProject::InvalidUrlError => e
+    respond_to do |format|
+      format.html { redirect_to @from_url, flash: { error: e.message } }
+      format.js
+      format.xml  { render xml: e.message.to_xml, status: :unprocessible_entity }
     end
   end
   

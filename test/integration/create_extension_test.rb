@@ -2,15 +2,21 @@ require 'test_helper'
 
 class CreateExtensionTest < ActionDispatch::IntegrationTest
 
-  test "must authenticate to create import extension" do
+  test "requires authentication to import extension" do
     get "/extensions/import"
     assert_response :redirect
   end
 
-  test "create extension with valid url" do
+  test "creates extension with valid url" do
     login "john@uservoice.com", "password"
     import_extension "git@github.com/jlong/css-spinners"
     assert_equal "/extensions/css-spinners", current_path
+  end
+
+  test "handles bad project url gracefully" do
+    login "john@uservoice.com", "password"
+    import_extension "jlong/css-spinners"
+    assert page.has_content?('Invalid GitHub project URL')
   end
 
   private

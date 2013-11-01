@@ -7,6 +7,8 @@ class GitHubProject
       @username = $1
       @reponame = $2
       @repository_url = "git@github.com:#{username}/#{reponame}.git"
+    else
+      raise InvalidUrlError, "Invalid GitHub project URL."
     end
   end
 
@@ -17,4 +19,6 @@ class GitHubProject
   def file(path)
     Octokit.contents("#{username}/#{reponame}", path: path, accept: "application/vnd.github-blob.raw")
   end
+
+  class InvalidUrlError < StandardError; end
 end
