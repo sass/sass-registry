@@ -1,0 +1,90 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1060" measuredH="1143" mockupW="1000" mockupH="1123">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::Image" x="115" y="140" w="150" h="115" measuredW="612" measuredH="471" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <filter>true</filter>
+        <src>./assets/logo.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="60" y="20" w="1000" h="1123" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20Web%20Page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Canvas" x="68" y="280" w="985" h="46" measuredW="100" measuredH="70" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>6710886</borderColor>
+        <color>6710886</color>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Link" x="460" y="181" w="-1" h="-1" measuredW="37" measuredH="19" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Install</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Link" x="552" y="181" w="-1" h="-1" measuredW="69" measuredH="19" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Learn%20Sass</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Link" x="670" y="181" w="-1" h="-1" measuredW="88" measuredH="19" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Documentation</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Link" x="938" y="181" w="-1" h="-1" measuredW="75" measuredH="19" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Get%20Involved</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="498" y="290" w="-1" h="-1" measuredW="161" measuredH="26" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <size>18</size>
+        <text>Search%20extensions...</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Icon" x="462" y="291" w="-1" h="-1" measuredW="24" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <icon>SearchIcon%7Csmall</icon>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::Label" x="813" y="180" w="-1" h="-1" measuredW="69" measuredH="21" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%20Extensions</text>
+      </controlProperties>
+    </control>
+    <control controlID="75" controlTypeID="com.balsamiq.mockups::HRule" x="68" y="548" w="985" h="-1" measuredW="100" measuredH="10" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>6710886</color>
+        <stroke>dotted</stroke>
+      </controlProperties>
+    </control>
+    <control controlID="78" controlTypeID="com.balsamiq.mockups::Paragraph" x="221" y="585" w="686" h="34" measuredW="200" measuredH="80" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <align>center</align>
+        <text>The%20%5Bsource%20code%5D%20for%20this%20website%20is%20available%20on%20GitHub%20and%20we%20welcome%20contributions%21%20Please%20direct%20bug%20reports%2C%20feature%20requests%2C%20and%20comments%20to%20the%20GitHub%20%5Bissue%20tracker%5D.</text>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::Title" x="432" y="372" w="-1" h="-1" measuredW="265" measuredH="43" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Please%20sign%20in%21</text>
+      </controlProperties>
+    </control>
+    <control controlID="90" controlTypeID="__group__" x="424" y="440" w="271" h="69" measuredW="271" measuredH="69" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>new-extension%26bm%3Bnew-extension.bmml%26bm%3Bnew-extension.bmml%26bm%3Bnew-extension.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22364%2C420%2C635%2C489%22%20href%3D%22new-extension.bmml%22%20alt%3D%22new-extension%22%20id%3D%2290%22/%3E</map>
+      </controlProperties>
+      <groupChildrenDescriptors>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="0" y="0" w="271" h="69" measuredW="178" measuredH="27" zOrder="0" locked="false" isInGroup="90">
+          <controlProperties>
+            <size>18</size>
+            <text>Sign%20in%20with%20GitHub</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+  </controls>
+</mockup>
