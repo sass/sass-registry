@@ -7,7 +7,7 @@ class CreateExtensionTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "creates extension with valid url" do
+  test "creates extension with valid project url" do
     login "john@uservoice.com", "password"
     import_extension "git@github.com/jlong/css-spinners"
     assert_equal "/extensions/css-spinners", current_path
