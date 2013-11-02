@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   protected
 
     def can_only_edit_self
-      unless current_user.id.to_i == params[:id].to_i
+      unless current_user.username == params[:id]
         flash[:error] = "You cannot edit another user's profile."
         redirect_to root_url
         false
