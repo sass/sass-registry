@@ -4,6 +4,7 @@
   <title><%= @title %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <!--<%= typekit_include_tag "pya1hgl" %>-->
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,21 +12,19 @@
 
     <div class="pop-stripe"></div>
 
-    <div class="account-ctn">
-    </div>
-
     <header class="banner" role="banner">
       <div class="container">
         <h1 class="site-brand"><%=link_to(image_tag("logo.png", :height => "96", :alt => "Sass"), root_path) %></h1>
-        <nav class="navigation collapse" role="navigation">
-          <ul>
-            <li id="extensions_link" class="<%= "here" if @selected == :extensions %> "><%= link_to "Extensions", extensions_path %></li>
-            <li id="authors_link" class="<%= "here" if @selected == :authors %> "><%= link_to "Authors", authors_path %></li>
-            <li id="search_link" class="<%= "here" if @selected == :search %> "><%= link_to "Search", search_path %></li>
-            <li><%= link_to "sass-lang.com →", "http://sass-lang.com", :class=>"button small" %></li>
-          </ul>
-        </nav>
-        <div class="banner-toggle">
+          <nav class="navigation collapse" role="navigation">
+            <ul>
+              <li><%= link_to "Install", "http://sass-lang.com/install" %></li>
+              <li><%= link_to "Learn Sass", "http://sass-lang.com/guide" %></li>
+              <li><%= link_to "Documentation", "http://sass-lang.com/documentation/file.SASS_REFERENCE.html" %></li>
+              <li><%= link_to "Extensions", root_path %></li>
+              <li><%= link_to "Get Involved", "http://sass-lang.com/community" %></li>
+            </ul>
+          </nav>
+       <div class="banner-toggle">
           <!-- <button data-target='.navigation' data-toggle='collapse' type='button'> -->
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
