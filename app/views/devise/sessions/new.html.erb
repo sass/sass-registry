@@ -1,46 +1,9 @@
-<%- @title = "Sass Extension Registry Login" %>
-<%- @h1 = "Please log in" %>
-<%- @selected = :login %>
-
-<%- if devise_mapping.omniauthable? %>
-  <div class="either-or-grid">
-    <div class="either-or-col1">
-<%- end %>
+<%- @title = "Sass Extension Registry Sign In" %>
+<%- @h1 = "Please sign in!" %>
+<%- @selected = :signin %>
 
 <h2><%= @h1 || @title %></h2>
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-  <p>
-    <%= f.label :email %>
-    <%= f.email_field 'email', class: 'textbox full-width', size: 42, autofocus: true %>
-  </p>
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password, class: 'textbox full-width', size: 20 %>
-  </p>
-  <%- if devise_mapping.recoverable? %>
-    <small style="display: block; margin-top: 0.25em">
-    <%= link_to "I forgot my password", new_password_path(resource_name) %><br />
-    </small>
-  <% end -%>
-  <% if devise_mapping.rememberable? -%>
-    <p>
-      <%= f.check_box :remember_me, class: 'checkbox' %>
-      <%= f.label :remember_me, 'Keep me logged in', class: 'checkbox' %>
-    </p>
-  <% end -%>
-  <div class="buttons">
-    <button type="submit">Log in</button>
-    &nbsp;
-    <%= link_to "Need an account?", signup_path %>
-  </div>
-<% end %>
 
-<%- if devise_mapping.omniauthable? %>
-    </div>
-    <div class="either-or-divider"></div>
-    <div class="either-or-col2 text-center">
-      <%= link_to "Login with GitHub", omniauth_authorize_path(resource_name, 'github'), class: "button github-button" %>
-    </div>
-  </div>
-<%- end %>
+<div class="mt4">
+<%= link_to "Sign in with GitHub", omniauth_authorize_path(resource_name, 'github'), class: "button github-button" %>
+</div>
