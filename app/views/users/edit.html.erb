@@ -10,9 +10,7 @@
     <p class="caption">Avatar provided by <a href="http://gravatar.com">Gravatar.com</a></p>
   </div>
 
-  <fieldset style="width: 70%">
-    <legend><span>Personal info</span></legend>
-
+  <div style="width: 70%">
     <div class="set">
       <p>
         <label for="user_name">Name</label>
@@ -42,32 +40,21 @@
       </p>
     </div>
 
-    <p>
-      <label for="user_bio">Bio 
-      <%= f.text_area :bio, :size => "38x4" %>
-      <span class="hint">Formatted with <a href="https://help.github.com/articles/github-flavored-markdown" target="_blank">Markdown</a></span>
-    </p>
-
-    <p>
-      <%= f.check_box :available_for_hire, :class => "checkbox" %>
-      <label class="checkbox" for="user_available_for_hire">I am available for hire on Sass projects</label>
-    </p>
-  </fieldset>
-
-  <fieldset style="width: 70%">
-    <legend><span>Account info</span></legend>
+    <div class="set">
+      <p>
+        <label for="user_bio">Bio 
+        <%= f.text_area :bio, :size => "38x4" %>
+        <span class="hint">Formatted with <a href="https://help.github.com/articles/github-flavored-markdown" target="_blank">Markdown</a></span>
+      </p>
+    </div>
 
     <div class="set">
       <p>
-        <label for="user_password">New Password</label>
-        <%= f.password_field :password, :class => "textbox", :size => 25 %>
-      </p>
-      <p>
-        <label for="user_password_confirmation">Confirm Password</label>
-        <%= f.password_field :password_confirmation, :class => "textbox", :size => 25 %>
+        <%= f.check_box :available_for_hire, :class => "checkbox" %>
+        <label class="checkbox" for="user_available_for_hire">I am available for hire on Sass projects</label>
       </p>
     </div>
-  </fieldset>
+  </div>
 
   <div class="buttons">
     <button type="submit">Save Profile</button>
