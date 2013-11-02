@@ -1,5 +1,6 @@
 # README
 
+
 ## Getting started
 
 1. You will need postgres installed on your system (skip to step 3 if you've already done this):
@@ -31,14 +32,24 @@
 
         bundle install
 
-8. Boostrap the database:
+8. Bootstrap the database:
 
         bundle exec rake db:migrate
 
+
+## Migrations
+
+As development progresses you may need to run migrations to keep your database
+up to date:
+
+    bundle exec rake db:migrate
+
+
 ## Deployment
 
-We use Heroku for deployment. You will need the Heroku toolbelt installed.
-If you don't have that, go here and follow the instructions:
+We use Heroku for deployment. You will need to be a collaborator on Heroku and
+the Heroku toolbelt must be installed. If you don't have the Heroku toolbelt,
+go here and follow the instructions:
 
   https://toolbelt.heroku.com/
 
@@ -54,5 +65,5 @@ To deploy, the only thing you need to do from now on is:
 
     git push heroku master
 
-You will, of course, need access to the project on Heroku, but seeing as you
-got access to this repo, somone should be available to give you that.
+
+

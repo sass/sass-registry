@@ -17,3 +17,11 @@ fi
 if [ -f ".variables" ]; then
   source ".variables"
 fi
+
+if [ -f ".github-auth" ]; then
+  source ".github-auth"
+fi
+
+if [ -f ".variables" ]; then
+  source ".variables"
+fi
