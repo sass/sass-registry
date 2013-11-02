@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:github]
 
   has_many :extensions, foreign_key: 'author_id', dependent: :destroy
+
+  validates :username, uniqueness: { case_sensitive: false }, :allow_nil => true
   
   scope :authors, -> { where("extensions_count > 0") }
 
@@ -23,6 +25,7 @@ class User < ActiveRecord::Base
     unless user
       user = User.create(
         name:     auth.extra.raw_info.name,
+        username: auth.extra.raw_info.login,
         provider: auth.provider,
         uid:      auth.uid,
         email:    auth.info.email,
@@ -40,6 +43,8 @@ class User < ActiveRecord::Base
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.github_data"] && session["devise.github_data"]["extra"]["raw_info"]
+        Rails.info(data.inspect)
+        user.username = data["login"] if user.username.blank?
         user.bio = data["bio"] if user.bio.blank?
         user.website = data["blog"] if user.website.blank?
         user.company = data["company"] if user.company.blank?
@@ -50,7 +55,11 @@ class User < ActiveRecord::Base
   end
   
   def to_param
-    [id, name].join('-').strip.gsub(/[^a-z0-9]+/i, '-').downcase
+    if username.blank?
+      [id, name].join('-').strip.gsub(/[^a-z0-9]+/i, '-').downcase
+    else
+      username
+    end
   end
   
   # TODO: what here?

@@ -6,6 +6,6 @@ class AuthorsController < ApplicationController
 
   # GET /authors/1
   def show
-    @author = User.authors.find(params[:id])
+    @author = User.authors.find_by_username(params[:id])
   end
 end

@@ -4,12 +4,12 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
   end
 
   # PUT /users/1
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
     if @user.update_attributes(user_params)
       flash[:notice] = "Profile updated."
       redirect_to root_url
