@@ -18,10 +18,8 @@
 
 <%= pagination_for @extensions %>
 
-<table id="extensions" class="index" style="clear: both">
-  <tbody>
+  <div class="extensions">
     <%= render partial: "extension", collection: @extensions %>
-  </tbody>
-</table>
+  </div>
 
 <%= pagination_for @extensions %>

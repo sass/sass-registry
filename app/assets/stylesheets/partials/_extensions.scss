@@ -93,3 +93,21 @@ table.index#extensions {
     top: 44px;
   }
 }
+
+.extensions {
+  float: left;
+  clear: both;
+  text-align: center;
+}
+
+.extension {
+  border: 1px solid $iron;
+  padding: 2em;
+  float: left;
+  width: 25%;
+  height: 5em;
+  text-align: left;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  &:nth-child(3n+3) {margin-right: 0;}
+}

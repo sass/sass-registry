@@ -67,6 +67,8 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    font-awesome-sass (4.0.1)
+      sass-rails (>= 3.1.1)
     fssm (0.2.10)
     hashie (2.0.5)
     hike (1.2.3)
@@ -192,6 +194,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails (~> 2.0.alpha.0)
   devise (~> 3.1.1)
+  font-awesome-sass
   jbuilder (~> 1.2)
   jquery-rails
   octokit (~> 2.0)

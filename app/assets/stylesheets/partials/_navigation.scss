@@ -85,6 +85,7 @@
       float:left;
       margin-right:2.12766%;
     };
+    list-style-type: none;
     margin-bottom:0.75em;
     @include breakpoint($large) {
       float:none;
@@ -114,7 +115,7 @@
     display:block;
     background:#ecedef;
     &:hover,&:focus {
-      background:#dadbdf;
+      background:$iron;
       @include breakpoint($large) {
         background:none;
       }
